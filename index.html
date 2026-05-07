@@ -24,9 +24,9 @@
 
     --line:rgba(255,255,255,0.08);
 
-    --blue:#b7e3ff;
-    --blue2:#7dd3fc;
-    --blue3:#38bdf8;
+    --blue:#c5ecff;
+    --blue2:#9ad9ff;
+    --blue3:#67c8ff;
 
 }
 
@@ -47,7 +47,7 @@ body{
     overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* Background */
 
 .background{
     position:fixed;
@@ -60,14 +60,13 @@ body{
     position:absolute;
     border-radius:999px;
     filter:blur(140px);
-    opacity:0.18;
+    opacity:0.16;
 }
 
 .g1{
     width:500px;
     height:500px;
     background:var(--blue2);
-
     top:-180px;
     left:-120px;
 }
@@ -76,7 +75,6 @@ body{
     width:400px;
     height:400px;
     background:var(--blue3);
-
     bottom:-140px;
     right:-120px;
 }
@@ -85,12 +83,9 @@ body{
     width:350px;
     height:350px;
     background:white;
-
     top:40%;
     left:40%;
 }
-
-/* GRID */
 
 .grid-overlay{
     position:fixed;
@@ -107,7 +102,7 @@ body{
     z-index:-4;
 }
 
-/* NAVBAR */
+/* Navbar */
 
 nav{
 
@@ -177,7 +172,7 @@ nav a:hover{
 
 }
 
-/* HERO */
+/* Hero */
 
 .hero{
 
@@ -263,7 +258,7 @@ nav a:hover{
 
 .hero p{
 
-    max-width:850px;
+    max-width:900px;
 
     margin:auto;
 
@@ -271,7 +266,7 @@ nav a:hover{
 
     line-height:2;
 
-    font-size:clamp(1rem,2vw,1.15rem);
+    font-size:clamp(1rem,2vw,1.12rem);
 
 }
 
@@ -338,7 +333,7 @@ nav a:hover{
 
 }
 
-/* SECTIONS */
+/* Sections */
 
 section{
 
@@ -375,7 +370,7 @@ section{
 
     color:var(--muted);
 
-    max-width:850px;
+    max-width:950px;
 
     margin:auto auto 70px;
 
@@ -385,7 +380,7 @@ section{
 
 }
 
-/* FEATURES */
+/* Features */
 
 .features{
 
@@ -429,7 +424,7 @@ section{
 
 }
 
-/* BOT GRID */
+/* Grid */
 
 .grid{
 
@@ -521,7 +516,7 @@ section{
 
 }
 
-/* FOOTER */
+/* Footer */
 
 footer{
 
@@ -537,7 +532,7 @@ footer{
 
 }
 
-/* MOBILE */
+/* Mobile */
 
 @media(max-width:850px){
 
@@ -620,17 +615,32 @@ Bluey Barks
 </h1>
 
 <p>
-Hey! I'm Bluey Barks — a Discord bot developer and community creator
-who has been coding and building advanced Discord systems for over a year.
+Hey! I'm Bluey Barks — a passionate Discord bot developer,
+Python programmer, and community creator who has been coding
+and building advanced Discord systems for over a year.
 
-I specialize in custom Discord bots using Python and discord.py,
-focused around moderation, automation, server security,
-role management, support systems, social integrations,
-and community features built to improve servers and staff workflows.
+I originally started learning development because I wanted to help
+friends and communities have an easier and more enjoyable experience
+inside their servers without needing to rely on multiple different bots
+to complete simple tasks.
 
-Most of my projects are designed for gaming communities,
-VRChat groups, social spaces, support servers,
-and large online communities.
+Instead of having communities install several bots for moderation,
+welcome systems, social alerts, support tools,
+logging, reaction roles, automod, and security,
+I wanted to create all-in-one systems capable of handling everything
+in a single clean and organized bot.
+
+Over time I continued learning Python and discord.py completely through
+practice, experimentation, research, and building real projects.
+The more systems I built, the more interested I became in learning
+advanced development, automation, and server management systems.
+
+Even now I’m constantly learning new things,
+improving my development skills,
+experimenting with new systems,
+and expanding my knowledge to create better and more powerful projects.
+I’m always willing to learn new technologies and systems if needed
+to improve the bots and communities I work on.
 </p>
 
 <div class="hero-buttons">
@@ -661,12 +671,20 @@ About Me
 I create advanced Discord bots and custom systems designed around helping
 communities stay secure, interactive, organized, and easier to manage.
 
-My work focuses heavily on moderation systems,
-automation, server security,
-welcome systems, social integrations,
-support systems, logging tools,
-verification systems, role management,
-and custom server experiences.
+A large part of my development focuses on moderation systems,
+automation, anti-raid protection,
+server security, logging systems,
+role management, support systems,
+verification tools, welcome systems,
+social media integrations, and fully custom community features.
+
+Alongside development,
+I also help manage and run VRChat communities,
+events, support spaces,
+staff teams, and social groups.
+Community management and development have become one of my biggest passions,
+and I’m constantly trying to improve both my coding skills
+and the overall experiences I create for communities.
 </p>
 
 </div>
@@ -678,13 +696,13 @@ and custom server experiences.
 <div class="container">
 
 <h2 class="section-title">
-Features
+What My Bots Can Do
 </h2>
 
 <p class="section-sub">
-My bots include powerful systems designed for communities,
-staff teams, gaming servers,
-VRChat groups, and large social spaces.
+My bots are designed to replace the need for multiple different bots
+by combining everything communities commonly need into one powerful,
+organized, and easy to manage system.
 </p>
 
 <div class="features">
@@ -706,6 +724,58 @@ VRChat groups, and large social spaces.
 
 </div>
 
+<div style="margin-top:70px;" class="grid">
+
+<div class="card">
+<h3>Advanced Moderation</h3>
+</div>
+
+<div class="card">
+<h3>Anti Raid Protection</h3>
+</div>
+
+<div class="card">
+<h3>Logging Systems</h3>
+</div>
+
+<div class="card">
+<h3>Reaction Roles</h3>
+</div>
+
+<div class="card">
+<h3>Verification Systems</h3>
+</div>
+
+<div class="card">
+<h3>Welcome & Goodbye Systems</h3>
+</div>
+
+<div class="card">
+<h3>Ticket & Support Systems</h3>
+</div>
+
+<div class="card">
+<h3>Social Media Alerts</h3>
+</div>
+
+<div class="card">
+<h3>Community Automation</h3>
+</div>
+
+<div class="card">
+<h3>Fun & Interactive Commands</h3>
+</div>
+
+<div class="card">
+<h3>Staff Management Tools</h3>
+</div>
+
+<div class="card">
+<h3>Fully Custom Features</h3>
+</div>
+
+</div>
+
 </div>
 
 </section>
@@ -719,7 +789,8 @@ My Bots
 </h2>
 
 <p class="section-sub">
-A collection of Discord bots and custom systems I’ve created.
+A collection of Discord bots and custom systems I’ve created
+for different communities, servers, and projects.
 </p>
 
 <div class="grid">
@@ -772,7 +843,7 @@ A collection of Discord bots and custom systems I’ve created.
 
 <footer>
 
-Made By Bluey Barks • Discord Bot Developer
+Made By Bluey Barks • Discord Bot Developer • Python Programmer
 
 </footer>
 
