@@ -17,8 +17,6 @@
     --bg:#050816;
     --bg2:#0b1120;
 
-    --card:#0f172a;
-
     --text:#f8fafc;
     --muted:#94a3b8;
 
@@ -100,6 +98,27 @@ body{
     mask-image:radial-gradient(circle at center, black 30%, transparent 90%);
 
     z-index:-4;
+}
+
+/* Cursor Glow */
+
+.cursor-glow{
+    width:300px;
+    height:300px;
+
+    background:rgba(125,211,252,0.08);
+
+    position:fixed;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    filter:blur(80px);
+
+    transform:translate(-50%,-50%);
+
+    z-index:-1;
 }
 
 /* Navbar */
@@ -258,7 +277,7 @@ nav a:hover{
 
 .hero p{
 
-    max-width:900px;
+    max-width:950px;
 
     margin:auto;
 
@@ -516,6 +535,16 @@ section{
 
 }
 
+.card p{
+
+    margin-top:18px;
+
+    color:var(--muted);
+
+    line-height:2;
+
+}
+
 /* Footer */
 
 footer{
@@ -578,6 +607,8 @@ footer{
 
 <div class="grid-overlay"></div>
 
+<div class="cursor-glow"></div>
+
 <nav>
 
 <div class="nav-container">
@@ -589,7 +620,11 @@ Bluey Barks
 <ul>
 
 <li><a href="#about">About</a></li>
+<li><a href="#stats">Stats</a></li>
 <li><a href="#features">Features</a></li>
+<li><a href="#focus">Focus</a></li>
+<li><a href="#learning">Learning</a></li>
+<li><a href="#projects">Projects</a></li>
 <li><a href="#bots">Bots</a></li>
 
 </ul>
@@ -619,28 +654,38 @@ Hey! I'm Bluey Barks — a passionate Discord bot developer,
 Python programmer, and community creator who has been coding
 and building advanced Discord systems for over a year.
 
-I originally started learning development because I wanted to help
-friends and communities have an easier and more enjoyable experience
-inside their servers without needing to rely on multiple different bots
-to complete simple tasks.
+I originally started learning development because I wanted my communities
+and the people around me to have a cleaner,
+more organized,
+and easier experience inside Discord without needing to rely on multiple different bots for simple tasks.
 
-Instead of having communities install several bots for moderation,
-welcome systems, social alerts, support tools,
-logging, reaction roles, automod, and security,
-I wanted to create all-in-one systems capable of handling everything
-in a single clean and organized bot.
+Over time I began creating custom all-in-one systems capable of handling moderation,
+automod,
+anti-raid protection,
+welcome systems,
+goodbye systems,
+social alerts,
+support systems,
+logging,
+reaction roles,
+verification,
+staff management,
+automation,
+and custom server tools all inside one organized bot.
 
-Over time I continued learning Python and discord.py completely through
-practice, experimentation, research, and building real projects.
-The more systems I built, the more interested I became in learning
-advanced development, automation, and server management systems.
+The more systems I built,
+the more interested I became in advanced automation,
+server infrastructure,
+security systems,
+community management,
+and large scale Discord development.
 
-Even now I’m constantly learning new things,
-improving my development skills,
-experimenting with new systems,
-and expanding my knowledge to create better and more powerful projects.
-I’m always willing to learn new technologies and systems if needed
-to improve the bots and communities I work on.
+Even now I’m constantly learning new technologies,
+experimenting with new ideas,
+improving my coding skills,
+and expanding my knowledge to create larger,
+better,
+and more powerful systems for the communities and people I work with.
 </p>
 
 <div class="hero-buttons">
@@ -653,6 +698,50 @@ View My Bots
 Explore Features
 </a>
 
+<a href="https://github.com/YOURUSERNAME" class="btn secondary" target="_blank">
+GitHub
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="stats">
+
+<div class="container">
+
+<h2 class="section-title">
+Statistics
+</h2>
+
+<p class="section-sub">
+A quick overview of my development journey and projects.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>1+ Years</h3>
+<p>Experience building Discord bots and automation systems.</p>
+</div>
+
+<div class="card">
+<h3>10+ Bots</h3>
+<p>Custom bots created for communities and projects.</p>
+</div>
+
+<div class="card">
+<h3>Python</h3>
+<p>Main language used for bot and automation development.</p>
+</div>
+
+<div class="card">
+<h3>24/7 Learning</h3>
+<p>Constantly improving systems and learning new technologies.</p>
+</div>
+
 </div>
 
 </div>
@@ -664,27 +753,39 @@ Explore Features
 <div class="container">
 
 <h2 class="section-title">
-About Me
+Why I Started Coding
 </h2>
 
 <p class="section-sub">
-I create advanced Discord bots and custom systems designed around helping
-communities stay secure, interactive, organized, and easier to manage.
+I originally started coding because of my main community and the people around me.
+I wanted my server to feel more unique,
+organized,
+interactive,
+and easier to manage without relying on several different bots that all worked differently.
 
-A large part of my development focuses on moderation systems,
-automation, anti-raid protection,
-server security, logging systems,
-role management, support systems,
-verification tools, welcome systems,
-social media integrations, and fully custom community features.
+At the time,
+many bots either lacked the features I wanted,
+felt too complicated,
+or required communities to constantly switch between multiple systems just to complete simple tasks.
 
-Alongside development,
-I also help manage and run VRChat communities,
-events, support spaces,
-staff teams, and social groups.
-Community management and development have become one of my biggest passions,
-and I’m constantly trying to improve both my coding skills
-and the overall experiences I create for communities.
+Because of that,
+I decided to start learning development myself so I could build systems designed specifically around the experience I wanted to create for my communities.
+
+Over time I began creating moderation systems,
+reaction roles,
+welcome systems,
+support tools,
+logging systems,
+automation features,
+social alerts,
+security systems,
+and custom management tools designed to make communities easier to manage while still feeling clean,
+modern,
+and organized.
+
+One of my biggest goals became simplifying Discord server management by reducing the need for communities to constantly switch between multiple bots,
+dashboards,
+and websites.
 </p>
 
 </div>
@@ -700,9 +801,7 @@ What My Bots Can Do
 </h2>
 
 <p class="section-sub">
-My bots are designed to replace the need for multiple different bots
-by combining everything communities commonly need into one powerful,
-organized, and easy to manage system.
+My bots are designed to replace the need for multiple different bots by combining everything communities commonly need into one organized and easy to manage system.
 </p>
 
 <div class="features">
@@ -724,54 +823,127 @@ organized, and easy to manage system.
 
 </div>
 
-<div style="margin-top:70px;" class="grid">
-
-<div class="card">
-<h3>Advanced Moderation</h3>
 </div>
 
-<div class="card">
-<h3>Anti Raid Protection</h3>
+</section>
+
+<section id="focus">
+
+<div class="container">
+
+<h2 class="section-title">
+Main Focus
+</h2>
+
+<p class="section-sub">
+The main systems and development areas I focus on most.
+</p>
+
+<div class="features">
+
+<div class="feature">Discord Automation</div>
+<div class="feature">VRChat Communities</div>
+<div class="feature">Server Security</div>
+<div class="feature">Moderation Systems</div>
+<div class="feature">Community Management</div>
+<div class="feature">Support Systems</div>
+<div class="feature">All-In-One Bots</div>
+<div class="feature">Custom Infrastructure</div>
+
 </div>
 
-<div class="card">
-<h3>Logging Systems</h3>
 </div>
 
-<div class="card">
-<h3>Reaction Roles</h3>
+</section>
+
+<section id="learning">
+
+<div class="container">
+
+<h2 class="section-title">
+Currently Learning
+</h2>
+
+<p class="section-sub">
+I’m constantly improving my knowledge and expanding my development skills.
+</p>
+
+<div class="features">
+
+<div class="feature">Advanced Python</div>
+<div class="feature">API Integrations</div>
+<div class="feature">Database Systems</div>
+<div class="feature">Automation Infrastructure</div>
+<div class="feature">Advanced Security</div>
+<div class="feature">Custom UI Systems</div>
+<div class="feature">Performance Optimization</div>
+<div class="feature">Server Infrastructure</div>
+
 </div>
 
-<div class="card">
-<h3>Verification Systems</h3>
 </div>
 
-<div class="card">
-<h3>Welcome & Goodbye Systems</h3>
-</div>
+</section>
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title">
+Projects In Progress
+</h2>
+
+<p class="section-sub">
+Larger systems and future projects I’m currently building and improving.
+</p>
+
+<div class="grid">
 
 <div class="card">
-<h3>Ticket & Support Systems</h3>
-</div>
 
-<div class="card">
-<h3>Social Media Alerts</h3>
-</div>
+<h3>All-In-One Community Platform</h3>
 
-<div class="card">
-<h3>Community Automation</h3>
-</div>
+<p>
+I’m currently working on a much larger all-in-one Discord bot system designed to make communities,
+staff teams,
+creators,
+and server owners manage everything more easily without needing to constantly switch between multiple bots,
+websites,
+or external tools.
 
-<div class="card">
-<h3>Fun & Interactive Commands</h3>
-</div>
+The project focuses heavily on simplifying complicated systems while still providing advanced features,
+customization,
+automation,
+and powerful management tools.
 
-<div class="card">
-<h3>Staff Management Tools</h3>
-</div>
+The system is being designed to combine moderation,
+anti-raid protection,
+automation,
+logging,
+reaction roles,
+verification,
+support systems,
+social alerts,
+community tools,
+and management systems into one clean and organized platform.
 
-<div class="card">
-<h3>Fully Custom Features</h3>
+Alongside server management systems,
+I’m also experimenting with features that would allow users to create,
+manage,
+and design things directly inside Discord itself without needing to leave the platform.
+
+This includes announcement builders,
+embed creators,
+design utilities,
+templates,
+automation tools,
+community setup systems,
+and creator focused tools designed to make server customization easier and more accessible.
+
+A major focus of the project is accessibility and ease of use.
+I want the system to feel simple enough for smaller communities and beginner server owners while still being powerful enough for larger communities and advanced staff teams.
+</p>
+
 </div>
 
 </div>
@@ -789,8 +961,7 @@ My Bots
 </h2>
 
 <p class="section-sub">
-A collection of Discord bots and custom systems I’ve created
-for different communities, servers, and projects.
+A collection of Discord bots and custom systems I’ve created for different communities and projects.
 </p>
 
 <div class="grid">
@@ -846,6 +1017,46 @@ for different communities, servers, and projects.
 Made By Bluey Barks • Discord Bot Developer • Python Programmer
 
 </footer>
+
+<script>
+
+const glow = document.querySelector('.cursor-glow');
+
+document.addEventListener('mousemove', e => {
+
+glow.style.left = e.clientX + 'px';
+glow.style.top = e.clientY + 'px';
+
+});
+
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity = "1";
+entry.target.style.transform = "translateY(0px)";
+
+}
+
+});
+
+});
+
+cards.forEach(card => {
+
+card.style.opacity = "0";
+card.style.transform = "translateY(40px)";
+card.style.transition = "0.7s ease";
+
+observer.observe(card);
+
+});
+
+</script>
 
 </body>
 </html>
