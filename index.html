@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bluey Barks | Discord Bot Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#070b14;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Background */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left,#60a5fa25,transparent 30%),
+    radial-gradient(circle at top right,#f9a8d425,transparent 30%),
+    radial-gradient(circle at bottom,#8b5cf625,transparent 35%);
+    z-index:-1;
+}
+
+/* Header */
+
+header{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:50px;
+}
+
+.hero{
+    max-width:1000px;
+}
+
+.hero h1{
+    font-size:6rem;
+    font-weight:700;
+    background:linear-gradient(90deg,#60a5fa,#f9a8d4,#c084fc);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:20px;
+}
+
+.hero h2{
+    font-size:1.5rem;
+    color:#d1d5db;
+    margin-bottom:30px;
+    font-weight:400;
+}
+
+.hero p{
+    font-size:1.15rem;
+    line-height:2;
+    color:#d1d5db;
+}
+
+.hero-box{
+    margin-top:35px;
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(15px);
+}
+
+/* Sections */
+
+section{
+    padding:90px 10%;
+}
+
+.section-title{
+    font-size:3rem;
+    text-align:center;
+    margin-bottom:50px;
+    background:linear-gradient(90deg,#93c5fd,#f9a8d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* About */
+
+.about{
+    max-width:1100px;
+    margin:auto;
+    text-align:center;
+    line-height:2.1;
+    color:#d1d5db;
+    font-size:1.1rem;
+}
+
+/* Cards */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:28px;
+    transition:0.35s;
+    backdrop-filter:blur(12px);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#93c5fd;
+    box-shadow:0 0 35px rgba(147,197,253,0.18);
+}
+
+.card h3{
+    margin-bottom:18px;
+    color:#f9a8d4;
+    font-size:1.5rem;
+}
+
+.card p{
+    color:#d1d5db;
+    line-height:1.9;
+}
+
+/* Skills */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    justify-content:center;
+}
+
+.skill{
+    padding:14px 24px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    color:#e5e7eb;
+}
+
+/* Footer */
+
+footer{
+    padding:50px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.08);
+    color:#9ca3af;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:3.5rem;
+}
+
+.hero h2{
+    font-size:1.1rem;
+}
+
+.hero p{
+    font-size:1rem;
+}
+
+.section-title{
+    font-size:2.2rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="hero">
+
+<h1>Bluey Barks</h1>
+
+<h2>
+Discord Bot Developer • Python Programmer • VRChat Community Creator
+</h2>
+
+<p>
+Hey! I'm Bluey Barks, a Discord bot developer and community creator
+who has been coding and building custom projects for over a year.
+
+I specialize in creating advanced Discord bots using Python and discord.py,
+focused around moderation systems, automation, role management,
+security systems, social integrations, support systems,
+and community interaction tools.
+
+Over time I’ve built multiple bots for communities, VRChat groups,
+gaming servers, friend groups, and support spaces.
+Every bot I make is designed around helping communities stay safer,
+more organized, more interactive, and easier to manage.
+
+Outside of coding, I also help manage online communities,
+host events, create server systems, and build tools that improve
+the overall experience for members and staff teams alike.
+
+Coding has become one of my biggest passions,
+and I’m constantly learning new things, improving my systems,
+and creating bigger and better projects.
+</p>
+
+<div class="hero-box">
+Coding For Over A Year • Multiple Custom Discord Bots • Community Focused Development
+</div>
+
+</div>
+
+</header>
+
+<section>
+
+<h2 class="section-title">What My Bots Can Do</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Moderation Systems</h3>
+<p>
+My bots include advanced moderation systems such as bans, kicks,
+timeouts, warns, mute systems, moderation logs,
+punishment tracking, anti-spam filters,
+anti-raid protection, automod systems,
+message logging, nickname moderation,
+and staff moderation tools.
+</p>
+</div>
+
+<div class="card">
+<h3>Role Management</h3>
+<p>
+Reaction roles, self assignable roles,
+auto roles, custom role menus,
+level reward roles, role syncing,
+staff role management,
+and automated role systems designed
+to keep communities organized.
+</p>
+</div>
+
+<div class="card">
+<h3>Welcome & Goodbye Systems</h3>
+<p>
+Custom welcome messages, goodbye messages,
+join notifications, leave notifications,
+welcome embeds, onboarding systems,
+member greeting systems,
+and automatic verification setups.
+</p>
+</div>
+
+<div class="card">
+<h3>Social Media Alerts</h3>
+<p>
+Automatic notifications for YouTube uploads,
+TikTok posts, Twitch streams,
+Twitter/X posts, announcements,
+and social media updates directly into Discord channels.
+</p>
+</div>
+
+<div class="card">
+<h3>Support Systems</h3>
+<p>
+Ticket systems, report systems,
+staff applications, support requests,
+moderation assistance tools,
+community support commands,
+and server management systems.
+</p>
+</div>
+
+<div class="card">
+<h3>Fun & Community Features</h3>
+<p>
+Interactive commands, games,
+fun responses, leveling systems,
+poll systems, giveaways,
+community events, reaction systems,
+and entertainment commands designed
+to improve community activity.
+</p>
+</div>
+
+<div class="card">
+<h3>Security & Protection</h3>
+<p>
+Anti-nuke systems, anti-bot protection,
+verification systems,
+link filtering, suspicious activity alerts,
+raid defense systems,
+and automated security features
+to help keep servers protected.
+</p>
+</div>
+
+<div class="card">
+<h3>Custom Development</h3>
+<p>
+Many of my bots are fully custom made
+for specific communities and include
+unique systems, themed commands,
+VRChat integrations,
+automation tools, and personalized features.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">My Discord Bots</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Neon Dreamers</h3>
+<p>Community focused moderation and automation bot.</p>
+</div>
+
+<div class="card">
+<h3>Playtime Co Toy's</h3>
+<p>Poppy Playtime themed roleplay and interaction bot.</p>
+</div>
+
+<div class="card">
+<h3>Pupppers Helper</h3>
+<p>Community helper and moderation support bot.</p>
+</div>
+
+<div class="card">
+<h3>Azure’s Bot Buddy</h3>
+<p>Custom utility and automation Discord bot.</p>
+</div>
+
+<div class="card">
+<h3>UGN SMP</h3>
+<p>Gaming and SMP community management bot.</p>
+</div>
+
+<div class="card">
+<h3>Otters Helper</h3>
+<p>Moderation and support focused server bot.</p>
+</div>
+
+<div class="card">
+<h3>The Goobers</h3>
+<p>Entertainment and community interaction bot.</p>
+</div>
+
+<div class="card">
+<h3>The Gay Bot</h3>
+<p>LGBTQ+ friendly community support bot.</p>
+</div>
+
+<div class="card">
+<h3>Furry Friend Supporter</h3>
+<p>Furry community moderation and support bot.</p>
+</div>
+
+<div class="card">
+<h3>UGN Staff Support</h3>
+<p>Staff management and moderation utility bot.</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills">
+
+<div class="skill">Python</div>
+<div class="skill">discord.py</div>
+<div class="skill">Discord Bot Development</div>
+<div class="skill">Server Security</div>
+<div class="skill">Automation Systems</div>
+<div class="skill">Community Management</div>
+<div class="skill">Moderation Systems</div>
+<div class="skill">VRChat Communities</div>
+<div class="skill">Custom Commands</div>
+<div class="skill">Event Management</div>
+<div class="skill">Support Systems</div>
+<div class="skill">Role Systems</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+Made By Bluey Barks • Discord Bot Developer • Python Programmer
+</p>
+
+</footer>
+
+</body>
+</html>
