@@ -48,9 +48,10 @@ nav{
 }
 
 .logo{
-    font-weight:800;
+    font-weight:900;
     letter-spacing:1px;
     color:var(--blue);
+    font-size:18px;
 }
 
 .links{
@@ -63,40 +64,42 @@ nav{
     font-size:14px;
     color:var(--muted);
     transition:0.2s;
+    font-weight:500;
 }
 
 .links a:hover{color:white}
 
-/* HERO */
+/* HERO (BIGGER / MORE PREMIUM) */
 .hero{
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:120px 20px 60px;
+    padding:140px 20px 80px;
 }
 
 .hero h1{
-    font-size:clamp(2.5rem,8vw,6rem);
+    font-size:clamp(3.2rem,9vw,7rem);
     font-weight:900;
     background:linear-gradient(90deg,#fff,#7dd3fc);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+    letter-spacing:-2px;
 }
 
 .hero p{
-    max-width:800px;
-    margin:20px auto;
+    max-width:900px;
+    margin:22px auto;
     color:var(--muted);
-    line-height:1.8;
-    font-size:14px;
+    line-height:1.9;
+    font-size:16px;
 }
 
 .badge{
     display:inline-flex;
     gap:8px;
-    padding:8px 14px;
+    padding:10px 16px;
     border:1px solid var(--stroke);
     border-radius:999px;
     background:rgba(255,255,255,0.03);
@@ -109,22 +112,23 @@ nav{
     gap:12px;
     justify-content:center;
     flex-wrap:wrap;
-    margin-top:30px;
+    margin-top:35px;
 }
 
 .btn{
-    padding:12px 18px;
+    padding:14px 20px;
     border-radius:12px;
-    font-weight:600;
+    font-weight:700;
     font-size:14px;
     border:1px solid var(--stroke);
-    transition:0.2s;
+    transition:0.25s;
 }
 
 .primary{
     background:linear-gradient(135deg,var(--blue),var(--blue2));
     color:#001018;
     border:none;
+    box-shadow:0 10px 40px rgba(56,189,248,0.15);
 }
 
 .primary:hover{transform:translateY(-3px)}
@@ -132,7 +136,7 @@ nav{
 
 /* SECTIONS */
 section{
-    padding:90px 20px;
+    padding:110px 20px;
 }
 
 .container{
@@ -142,41 +146,45 @@ section{
 
 .title{
     text-align:center;
-    font-size:2.2rem;
-    font-weight:800;
-    margin-bottom:10px;
+    font-size:2.8rem;
+    font-weight:900;
+    margin-bottom:12px;
+    letter-spacing:-1px;
 }
 
 .sub{
     text-align:center;
     color:var(--muted);
-    max-width:800px;
-    margin:0 auto 50px;
-    font-size:14px;
+    max-width:850px;
+    margin:0 auto 55px;
+    font-size:15px;
+    line-height:1.8;
 }
 
 /* GRID */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
 }
 
 .card{
-    padding:22px;
-    border-radius:18px;
-    background:var(--card);
+    padding:26px;
+    border-radius:20px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
     border:1px solid var(--stroke);
     transition:0.25s;
+    backdrop-filter:blur(10px);
 }
 
 .card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-8px);
     border-color:rgba(125,211,252,0.4);
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
 }
 
-.card h3{margin-bottom:10px}
-.card p{color:var(--muted);font-size:14px;line-height:1.6}
+.card h3{margin-bottom:10px;font-size:18px}
+.card p{color:var(--muted);font-size:14px;line-height:1.7}
 
 /* FEATURES */
 .tags{
@@ -187,7 +195,7 @@ section{
 }
 
 .tag{
-    padding:8px 12px;
+    padding:9px 13px;
     border-radius:999px;
     background:rgba(255,255,255,0.03);
     border:1px solid var(--stroke);
@@ -200,46 +208,47 @@ section{
     display:flex;
     gap:8px;
     flex-wrap:wrap;
-    margin-top:10px;
+    margin-top:12px;
 }
 
 .price span{
     font-size:12px;
-    padding:4px 8px;
+    padding:5px 9px;
     border-radius:8px;
-    background:rgba(125,211,252,0.08);
-    border:1px solid rgba(125,211,252,0.2);
+    background:rgba(125,211,248,0.08);
+    border:1px solid rgba(125,211,248,0.2);
 }
 
 /* MOBILE */
 @media(max-width:768px){
     .links{display:none;}
-    .hero h1{font-size:3rem;}
+    .hero h1{font-size:3.2rem;}
     .btns{flex-direction:column;}
     .btn{width:100%;}
+    .title{font-size:2.2rem;}
 }
 
 footer{
     text-align:center;
-    padding:50px;
+    padding:60px;
     color:#64748b;
     border-top:1px solid var(--stroke);
 }
 
-/* HIRE BUTTON */
+/* HIRE */
 .hire{
     text-align:center;
-    margin-top:20px;
+    margin-top:30px;
 }
 
 .hire a{
     display:inline-block;
-    margin-top:10px;
-    padding:12px 18px;
+    margin-top:12px;
+    padding:14px 20px;
     border-radius:12px;
     background:linear-gradient(135deg,#7dd3fc,#38bdf8);
     color:#001018;
-    font-weight:700;
+    font-weight:800;
 }
 
 </style></head>
@@ -258,7 +267,7 @@ footer{
 <div>
 <div class="badge">Discord Developer • Python • Automation</div>
 <h1>Bluey Barks</h1>
-<p>I build modern Discord bots focused on automation, moderation, and security systems for communities.</p>
+<p>I build modern Discord bots focused on automation, moderation, security, and scalable community systems designed for real servers.</p>
 <div class="btns">
 <a class="btn primary" href="#packages">View Pricing</a>
 <a class="btn secondary" href="#features">Features</a>
@@ -268,17 +277,18 @@ footer{
 </header><section id="stats">
 <div class="container">
 <h2 class="title">Stats</h2>
-<p class="sub">Overview of development experience.</p>
+<p class="sub">Overview of development experience and systems built.</p>
 <div class="grid">
-<div class="card"><h3>10+ Bots</h3><p>Active systems.</p></div>
-<div class="card"><h3>1+ Year</h3><p>Discord development.</p></div>
-<div class="card"><h3>Python</h3><p>Main language.</p></div>
-<div class="card"><h3>24/7 Systems</h3><p>Always online setups.</p></div>
+<div class="card"><h3>10+ Bots</h3><p>Active systems across communities.</p></div>
+<div class="card"><h3>1+ Year</h3><p>Discord development experience.</p></div>
+<div class="card"><h3>Python</h3><p>Main development language.</p></div>
+<div class="card"><h3>24/7 Systems</h3><p>Always online infrastructure setups.</p></div>
 </div>
 </div>
 </section><section id="features">
 <div class="container">
 <h2 class="title">Features</h2>
+<p class="sub">All systems included in my Discord bots.</p>
 <div class="tags">
 <span class="tag">Moderation</span>
 <span class="tag">AutoMod</span>
@@ -296,29 +306,29 @@ footer{
 <div class="grid">
 <div class="card">
 <h3>Starter</h3>
-<p>Basic moderation bot</p>
+<p>Basic moderation bot for small servers.</p>
 <div class="price"><span>£40</span><span>€47</span><span>$50</span></div>
-<p>£3 / €3.5 / $4 monthly</p>
+<p>£3 / €3.5 / $4 monthly hosting</p>
 </div>
 <div class="card">
 <h3>Standard</h3>
-<p>Moderation + tickets + logs</p>
+<p>Moderation, tickets, logs, automation systems.</p>
 <div class="price"><span>£60</span><span>€70</span><span>$75</span></div>
-<p>£5 / €6 / $6.5 monthly</p>
+<p>£5 / €6 / $6.5 monthly hosting</p>
 </div>
 <div class="card">
 <h3>Advanced</h3>
-<p>Anti-raid + security systems</p>
+<p>Anti-raid + security + custom systems.</p>
 <div class="price"><span>£90</span><span>€105</span><span>$115</span></div>
-<p>£8 / €9 / $10 monthly</p>
+<p>£8 / €9 / $10 monthly hosting</p>
 </div>
 </div><div class="hire" id="hire">
-<h3>Want a custom bot?</h3>
-<p>Contact me directly on Discord</p>
-<a href="https://discord.com/users/bluebarks" target="_blank">Hire Me</a>
-</div></div>
+<h3>Hire Me</h3>
+<p>Contact me on Discord via <strong>blueybarks</strong></p>
+<a href="#">Contact me on Discord</a>
+</div>
+</div>
 </section><footer>
-Made by Bluey Barks • Discord Developer
+Made by Bluey Barks • Discord Developer • Python Automation
 </footer></body>
-    
 </html>
