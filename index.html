@@ -1,1062 +1,324 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Bluey Barks • Discord Bot Developer</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bluey Barks • Discord Developer</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
 
 :root{
-
     --bg:#050816;
-    --bg2:#0b1120;
-
-    --text:#f8fafc;
+    --card:rgba(255,255,255,0.04);
+    --stroke:rgba(255,255,255,0.08);
+    --text:#e2e8f0;
     --muted:#94a3b8;
-
-    --line:rgba(255,255,255,0.08);
-
-    --blue:#c5ecff;
-    --blue2:#9ad9ff;
-    --blue3:#67c8ff;
-
+    --blue:#7dd3fc;
+    --blue2:#38bdf8;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
-    font-family:'Inter',sans-serif;
-    background:var(--bg);
+    font-family:Inter,sans-serif;
+    background:radial-gradient(circle at top,#0b1224,#050816);
     color:var(--text);
     overflow-x:hidden;
 }
 
-/* Background */
+a{color:inherit;text-decoration:none}
 
-.background{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-    overflow:hidden;
-}
-
-.gradient{
-    position:absolute;
-    border-radius:999px;
-    filter:blur(140px);
-    opacity:0.16;
-}
-
-.g1{
-    width:500px;
-    height:500px;
-    background:var(--blue2);
-    top:-180px;
-    left:-120px;
-}
-
-.g2{
-    width:400px;
-    height:400px;
-    background:var(--blue3);
-    bottom:-140px;
-    right:-120px;
-}
-
-.g3{
-    width:350px;
-    height:350px;
-    background:white;
-    top:40%;
-    left:40%;
-}
-
-.grid-overlay{
-    position:fixed;
-    inset:0;
-
-    background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-
-    background-size:40px 40px;
-
-    mask-image:radial-gradient(circle at center, black 30%, transparent 90%);
-
-    z-index:-4;
-}
-
-/* Cursor Glow */
-
-.cursor-glow{
-    width:300px;
-    height:300px;
-
-    background:rgba(125,211,252,0.08);
-
-    position:fixed;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    filter:blur(80px);
-
-    transform:translate(-50%,-50%);
-
-    z-index:-1;
-}
-
-/* Navbar */
-
+/* NAV */
 nav{
-
     position:fixed;
     top:0;
     width:100%;
-
-    z-index:1000;
-
-    backdrop-filter:blur(20px);
-
-    background:rgba(5,8,22,0.7);
-
-    border-bottom:1px solid var(--line);
-
+    z-index:999;
+    backdrop-filter:blur(18px);
+    background:rgba(5,8,22,0.6);
+    border-bottom:1px solid var(--stroke);
 }
 
-.nav-container{
-
-    max-width:1400px;
+.nav{
+    max-width:1200px;
     margin:auto;
-
-    padding:22px 28px;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
-
+    padding:18px 22px;
+    flex-wrap:wrap;
 }
 
 .logo{
-
-    font-size:1.15rem;
     font-weight:800;
-
     letter-spacing:1px;
-
     color:var(--blue);
-
 }
 
-nav ul{
-
+.links{
     display:flex;
-    gap:26px;
-
-    list-style:none;
-
+    gap:18px;
+    flex-wrap:wrap;
 }
 
-nav a{
-
-    text-decoration:none;
-
+.links a{
+    font-size:14px;
     color:var(--muted);
-
-    transition:0.3s;
-
-    font-size:0.95rem;
-    font-weight:500;
-
+    transition:0.2s;
 }
 
-nav a:hover{
+.links a:hover{color:white}
 
-    color:white;
-
-}
-
-/* Hero */
-
+/* HERO */
 .hero{
-
     min-height:100vh;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    padding:140px 24px 90px;
-
     text-align:center;
-
-}
-
-.hero-content{
-
-    width:100%;
-    max-width:1100px;
-
-}
-
-.badge{
-
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-
-    padding:12px 18px;
-
-    border-radius:999px;
-
-    background:rgba(255,255,255,0.04);
-
-    border:1px solid rgba(255,255,255,0.07);
-
-    color:#dbeafe;
-
-    margin-bottom:32px;
-
-    font-size:0.9rem;
-    font-weight:500;
-
-    backdrop-filter:blur(12px);
-
-}
-
-.dot{
-
-    width:10px;
-    height:10px;
-
-    border-radius:999px;
-
-    background:var(--blue2);
-
-    box-shadow:0 0 15px var(--blue2);
-
+    padding:120px 20px 60px;
 }
 
 .hero h1{
-
-    font-size:clamp(4rem,12vw,8rem);
-
+    font-size:clamp(2.5rem,8vw,6rem);
     font-weight:900;
-
-    line-height:0.95;
-
-    letter-spacing:-6px;
-
-    margin-bottom:30px;
-
-    background:linear-gradient(
-        to bottom,
-        #ffffff,
-        #b7e3ff
-    );
-
+    background:linear-gradient(90deg,#fff,#7dd3fc);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-
 }
 
 .hero p{
-
-    max-width:950px;
-
-    margin:auto;
-
+    max-width:800px;
+    margin:20px auto;
     color:var(--muted);
-
-    line-height:2;
-
-    font-size:clamp(1rem,2vw,1.12rem);
-
+    line-height:1.8;
+    font-size:14px;
 }
 
-.hero-buttons{
+.badge{
+    display:inline-flex;
+    gap:8px;
+    padding:8px 14px;
+    border:1px solid var(--stroke);
+    border-radius:999px;
+    background:rgba(255,255,255,0.03);
+    font-size:13px;
+    color:#cbd5e1;
+}
 
-    margin-top:50px;
-
+.btns{
     display:flex;
+    gap:12px;
     justify-content:center;
-    gap:16px;
-
     flex-wrap:wrap;
-
+    margin-top:30px;
 }
 
 .btn{
-
-    padding:17px 28px;
-
-    border-radius:18px;
-
-    text-decoration:none;
-
-    transition:0.3s;
-
+    padding:12px 18px;
+    border-radius:12px;
     font-weight:600;
-
+    font-size:14px;
+    border:1px solid var(--stroke);
+    transition:0.2s;
 }
 
 .primary{
-
-    background:linear-gradient(
-        135deg,
-        var(--blue),
-        var(--blue2)
-    );
-
-    color:black;
-
-    box-shadow:
-    0 0 40px rgba(125,211,252,0.25);
-
+    background:linear-gradient(135deg,var(--blue),var(--blue2));
+    color:#001018;
+    border:none;
 }
 
-.primary:hover{
+.primary:hover{transform:translateY(-3px)}
+.secondary:hover{background:rgba(255,255,255,0.06)}
 
-    transform:translateY(-5px) scale(1.02);
-
-}
-
-.secondary{
-
-    background:rgba(255,255,255,0.03);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    color:white;
-
-}
-
-.secondary:hover{
-
-    background:rgba(255,255,255,0.06);
-
-}
-
-/* Sections */
-
+/* SECTIONS */
 section{
-
-    padding:120px 24px;
-
+    padding:90px 20px;
 }
 
 .container{
-
-    max-width:1350px;
+    max-width:1200px;
     margin:auto;
-
 }
 
-.section-title{
-
+.title{
     text-align:center;
-
-    font-size:clamp(2.5rem,7vw,5rem);
-
+    font-size:2.2rem;
     font-weight:800;
-
-    letter-spacing:-4px;
-
-    margin-bottom:20px;
-
-    color:white;
-
+    margin-bottom:10px;
 }
 
-.section-sub{
-
+.sub{
     text-align:center;
-
     color:var(--muted);
-
-    max-width:950px;
-
-    margin:auto auto 70px;
-
-    line-height:2;
-
-    font-size:1.05rem;
-
+    max-width:800px;
+    margin:0 auto 50px;
+    font-size:14px;
 }
 
-/* Features */
-
-.features{
-
-    display:flex;
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:16px;
-
-}
-
-.feature{
-
-    padding:15px 22px;
-
-    border-radius:16px;
-
-    background:rgba(255,255,255,0.04);
-
-    border:1px solid rgba(255,255,255,0.07);
-
-    color:#dbeafe;
-
-    transition:0.3s;
-
-    font-weight:500;
-
-    backdrop-filter:blur(12px);
-
-}
-
-.feature:hover{
-
-    transform:translateY(-5px);
-
-    border-color:rgba(125,211,252,0.5);
-
-    box-shadow:
-    0 0 25px rgba(125,211,252,0.08);
-
-}
-
-/* Grid */
-
+/* GRID */
 .grid{
-
     display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-
-    gap:24px;
-
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
 }
 
 .card{
-
-    position:relative;
-
-    padding:38px;
-
-    border-radius:30px;
-
-    overflow:hidden;
-
-    background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,0.06),
-        rgba(255,255,255,0.03)
-    );
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    backdrop-filter:blur(18px);
-
-    transition:0.4s ease;
-
-}
-
-.card::before{
-
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(
-        135deg,
-        rgba(255,255,255,0.08),
-        transparent,
-        transparent
-    );
-
-    opacity:0;
-
-    transition:0.4s;
-
-}
-
-.card:hover::before{
-
-    opacity:1;
-
+    padding:22px;
+    border-radius:18px;
+    background:var(--card);
+    border:1px solid var(--stroke);
+    transition:0.25s;
 }
 
 .card:hover{
-
-    transform:
-    translateY(-12px)
-    scale(1.02);
-
-    border-color:rgba(125,211,252,0.45);
-
-    box-shadow:
-    0 0 40px rgba(125,211,252,0.12),
-    0 0 80px rgba(125,211,252,0.08);
-
+    transform:translateY(-6px);
+    border-color:rgba(125,211,252,0.4);
 }
 
-.card h3{
+.card h3{margin-bottom:10px}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
 
-    position:relative;
-
-    z-index:2;
-
-    font-size:1.45rem;
-
-    font-weight:700;
-
-    color:white;
-
+/* FEATURES */
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
 }
 
-.card p{
-
-    margin-top:18px;
-
-    color:var(--muted);
-
-    line-height:2;
-
+.tag{
+    padding:8px 12px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--stroke);
+    font-size:13px;
+    color:#cbd5e1;
 }
 
-/* Footer */
+/* PRICE */
+.price{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.price span{
+    font-size:12px;
+    padding:4px 8px;
+    border-radius:8px;
+    background:rgba(125,211,252,0.08);
+    border:1px solid rgba(125,211,252,0.2);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .links{display:none;}
+    .hero h1{font-size:3rem;}
+    .btns{flex-direction:column;}
+    .btn{width:100%;}
+}
 
 footer{
-
-    padding:60px 24px;
-
-    border-top:1px solid rgba(255,255,255,0.06);
-
     text-align:center;
-
+    padding:50px;
     color:#64748b;
-
-    font-size:0.95rem;
-
+    border-top:1px solid var(--stroke);
 }
 
-/* Mobile */
-
-@media(max-width:850px){
-
-    nav ul{
-        display:none;
-    }
-
-    .hero{
-        padding-top:170px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-    }
-
-    .btn{
-        width:100%;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-
-    .card{
-        padding:32px;
-    }
-
+/* HIRE BUTTON */
+.hire{
+    text-align:center;
+    margin-top:20px;
 }
 
-</style>
-
-</head>
-
-<body>
-
-<div class="background">
-
-<div class="gradient g1"></div>
-<div class="gradient g2"></div>
-<div class="gradient g3"></div>
-
-</div>
-
-<div class="grid-overlay"></div>
-
-<div class="cursor-glow"></div>
-
-<nav>
-
-<div class="nav-container">
-
-<div class="logo">
-Bluey Barks
-</div>
-
-<ul>
-
-<li><a href="#about">About</a></li>
-<li><a href="#stats">Stats</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#focus">Focus</a></li>
-<li><a href="#learning">Learning</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#bots">Bots</a></li>
-
-</ul>
-
-</div>
-
-</nav>
-
-<section class="hero">
-
-<div class="hero-content">
-
-<div class="badge">
-
-<div class="dot"></div>
-
-Discord Bot Developer • Python Programmer • VRChat Creator
-
-</div>
-
-<h1>
-Bluey Barks
-</h1>
-
-<p>
-Hey! I'm Bluey Barks — a passionate Discord bot developer,
-Python programmer, and community creator who has been coding
-and building advanced Discord systems for over a year.
-
-I originally started learning development because I wanted my communities
-and the people around me to have a cleaner,
-more organized,
-and easier experience inside Discord without needing to rely on multiple different bots for simple tasks.
-
-Over time I began creating custom all-in-one systems capable of handling moderation,
-automod,
-anti-raid protection,
-welcome systems,
-goodbye systems,
-social alerts,
-support systems,
-logging,
-reaction roles,
-verification,
-staff management,
-automation,
-and custom server tools all inside one organized bot.
-
-The more systems I built,
-the more interested I became in advanced automation,
-server infrastructure,
-security systems,
-community management,
-and large scale Discord development.
-
-Even now I’m constantly learning new technologies,
-experimenting with new ideas,
-improving my coding skills,
-and expanding my knowledge to create larger,
-better,
-and more powerful systems for the communities and people I work with.
-</p>
-
-<div class="hero-buttons">
-
-<a href="#bots" class="btn primary">
-View My Bots
-</a>
-
-<a href="#features" class="btn secondary">
-Explore Features
-</a>
-
-<a href="https://github.com/Alang0991" class="btn secondary" target="_blank">
-GitHub
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="stats">
-
-<div class="container">
-
-<h2 class="section-title">
-Statistics
-</h2>
-
-<p class="section-sub">
-A quick overview of my development journey and projects.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>1+ Years</h3>
-<p>Experience building Discord bots and automation systems.</p>
-</div>
-
-<div class="card">
-<h3>10+ Bots</h3>
-<p>Custom bots created for communities and projects.</p>
-</div>
-
-<div class="card">
-<h3>Python</h3>
-<p>Main language used for bot and automation development.</p>
-</div>
-
-<div class="card">
-<h3>24/7 Learning</h3>
-<p>Constantly improving systems and learning new technologies.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="about">
-
-<div class="container">
-
-<h2 class="section-title">
-Why I Started Coding
-</h2>
-
-<p class="section-sub">
-I originally started coding because of my main community and the people around me.
-I wanted my server to feel more unique,
-organized,
-interactive,
-and easier to manage without relying on several different bots that all worked differently.
-
-At the time,
-many bots either lacked the features I wanted,
-felt too complicated,
-or required communities to constantly switch between multiple systems just to complete simple tasks.
-
-Because of that,
-I decided to start learning development myself so I could build systems designed specifically around the experience I wanted to create for my communities.
-
-Over time I began creating moderation systems,
-reaction roles,
-welcome systems,
-support tools,
-logging systems,
-automation features,
-social alerts,
-security systems,
-and custom management tools designed to make communities easier to manage while still feeling clean,
-modern,
-and organized.
-
-One of my biggest goals became simplifying Discord server management by reducing the need for communities to constantly switch between multiple bots,
-dashboards,
-and websites.
-</p>
-
-</div>
-
-</section>
-
-<section id="features">
-
-<div class="container">
-
-<h2 class="section-title">
-What My Bots Can Do
-</h2>
-
-<p class="section-sub">
-My bots are designed to replace the need for multiple different bots by combining everything communities commonly need into one organized and easy to manage system.
-</p>
-
-<div class="features">
-
-<div class="feature">Moderation</div>
-<div class="feature">AutoMod</div>
-<div class="feature">Reaction Roles</div>
-<div class="feature">Welcome Systems</div>
-<div class="feature">Goodbye Systems</div>
-<div class="feature">Anti Raid</div>
-<div class="feature">Verification</div>
-<div class="feature">Logging</div>
-<div class="feature">Tickets</div>
-<div class="feature">Security</div>
-<div class="feature">Social Alerts</div>
-<div class="feature">Automation</div>
-<div class="feature">Custom Systems</div>
-<div class="feature">Fun Commands</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="focus">
-
-<div class="container">
-
-<h2 class="section-title">
-Main Focus
-</h2>
-
-<p class="section-sub">
-The main systems and development areas I focus on most.
-</p>
-
-<div class="features">
-
-<div class="feature">Discord Automation</div>
-<div class="feature">VRChat Communities</div>
-<div class="feature">Server Security</div>
-<div class="feature">Moderation Systems</div>
-<div class="feature">Community Management</div>
-<div class="feature">Support Systems</div>
-<div class="feature">All-In-One Bots</div>
-<div class="feature">Custom Infrastructure</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="learning">
-
-<div class="container">
-
-<h2 class="section-title">
-Currently Learning
-</h2>
-
-<p class="section-sub">
-I’m constantly improving my knowledge and expanding my development skills.
-</p>
-
-<div class="features">
-
-<div class="feature">Advanced Python</div>
-<div class="feature">API Integrations</div>
-<div class="feature">Database Systems</div>
-<div class="feature">Automation Infrastructure</div>
-<div class="feature">Advanced Security</div>
-<div class="feature">Custom UI Systems</div>
-<div class="feature">Performance Optimization</div>
-<div class="feature">Server Infrastructure</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="projects">
-
-<div class="container">
-
-<h2 class="section-title">
-Projects In Progress
-</h2>
-
-<p class="section-sub">
-Larger systems and future projects I’m currently building and improving.
-</p>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>All-In-One Community Platform</h3>
-
-<p>
-I’m currently working on a much larger all-in-one Discord bot system designed to make communities,
-staff teams,
-creators,
-and server owners manage everything more easily without needing to constantly switch between multiple bots,
-websites,
-or external tools.
-
-The project focuses heavily on simplifying complicated systems while still providing advanced features,
-customization,
-automation,
-and powerful management tools.
-
-The system is being designed to combine moderation,
-anti-raid protection,
-automation,
-logging,
-reaction roles,
-verification,
-support systems,
-social alerts,
-community tools,
-and management systems into one clean and organized platform.
-
-Alongside server management systems,
-I’m also experimenting with features that would allow users to create,
-manage,
-and design things directly inside Discord itself without needing to leave the platform.
-
-This includes announcement builders,
-embed creators,
-design utilities,
-templates,
-automation tools,
-community setup systems,
-and creator focused tools designed to make server customization easier and more accessible.
-
-A major focus of the project is accessibility and ease of use.
-I want the system to feel simple enough for smaller communities and beginner server owners while still being powerful enough for larger communities and advanced staff teams.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="bots">
-
-<div class="container">
-
-<h2 class="section-title">
-My Bots
-</h2>
-
-<p class="section-sub">
-A collection of Discord bots and custom systems I’ve created for different communities and projects.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>Neon Dreamers</h3>
-</div>
-
-<div class="card">
-<h3>Playtime Co Toy's</h3>
-</div>
-
-<div class="card">
-<h3>Pupppers Helper</h3>
-</div>
-
-<div class="card">
-<h3>Azure’s Bot Buddy</h3>
-</div>
-
-<div class="card">
-<h3>UGN SMP</h3>
-</div>
-
-<div class="card">
-<h3>Otters Helper</h3>
-</div>
-
-<div class="card">
-<h3>The Goobers</h3>
-</div>
-
-<div class="card">
-<h3>The Gay Bot</h3>
-</div>
-
-<div class="card">
-<h3>Furry Friend Supporter</h3>
-</div>
-
-<div class="card">
-<h3>UGN Staff Support</h3>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-Made By Bluey Barks • Discord Bot Developer • Python Programmer
-
-</footer>
-
-<script>
-
-const glow = document.querySelector('.cursor-glow');
-
-document.addEventListener('mousemove', e => {
-
-glow.style.left = e.clientX + 'px';
-glow.style.top = e.clientY + 'px';
-
-});
-
-const cards = document.querySelectorAll('.card');
-
-const observer = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity = "1";
-entry.target.style.transform = "translateY(0px)";
-
+.hire a{
+    display:inline-block;
+    margin-top:10px;
+    padding:12px 18px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#7dd3fc,#38bdf8);
+    color:#001018;
+    font-weight:700;
 }
 
-});
-
-});
-
-cards.forEach(card => {
-
-card.style.opacity = "0";
-card.style.transform = "translateY(40px)";
-card.style.transition = "0.7s ease";
-
-observer.observe(card);
-
-});
-
-</script>
-
-</body>
+</style></head>
+<body><nav>
+<div class="nav">
+<div class="logo">Bluey Barks</div>
+<div class="links">
+<a href="#about">About</a>
+<a href="#stats">Stats</a>
+<a href="#features">Features</a>
+<a href="#packages">Packages</a>
+<a href="#hire">Hire Me</a>
+</div>
+</div>
+</nav><header class="hero">
+<div>
+<div class="badge">Discord Developer • Python • Automation</div>
+<h1>Bluey Barks</h1>
+<p>I build modern Discord bots focused on automation, moderation, and security systems for communities.</p>
+<div class="btns">
+<a class="btn primary" href="#packages">View Pricing</a>
+<a class="btn secondary" href="#features">Features</a>
+<a class="btn secondary" href="https://github.com">GitHub</a>
+</div>
+</div>
+</header><section id="stats">
+<div class="container">
+<h2 class="title">Stats</h2>
+<p class="sub">Overview of development experience.</p>
+<div class="grid">
+<div class="card"><h3>10+ Bots</h3><p>Active systems.</p></div>
+<div class="card"><h3>1+ Year</h3><p>Discord development.</p></div>
+<div class="card"><h3>Python</h3><p>Main language.</p></div>
+<div class="card"><h3>24/7 Systems</h3><p>Always online setups.</p></div>
+</div>
+</div>
+</section><section id="features">
+<div class="container">
+<h2 class="title">Features</h2>
+<div class="tags">
+<span class="tag">Moderation</span>
+<span class="tag">AutoMod</span>
+<span class="tag">Anti-Raid</span>
+<span class="tag">Logging</span>
+<span class="tag">Tickets</span>
+<span class="tag">Security</span>
+<span class="tag">Automation</span>
+<span class="tag">Reaction Roles</span>
+</div>
+</div>
+</section><section id="packages">
+<div class="container">
+<h2 class="title">Packages & Hosting</h2>
+<div class="grid">
+<div class="card">
+<h3>Starter</h3>
+<p>Basic moderation bot</p>
+<div class="price"><span>£40</span><span>€47</span><span>$50</span></div>
+<p>£3 / €3.5 / $4 monthly</p>
+</div>
+<div class="card">
+<h3>Standard</h3>
+<p>Moderation + tickets + logs</p>
+<div class="price"><span>£60</span><span>€70</span><span>$75</span></div>
+<p>£5 / €6 / $6.5 monthly</p>
+</div>
+<div class="card">
+<h3>Advanced</h3>
+<p>Anti-raid + security systems</p>
+<div class="price"><span>£90</span><span>€105</span><span>$115</span></div>
+<p>£8 / €9 / $10 monthly</p>
+</div>
+</div><div class="hire" id="hire">
+<h3>Want a custom bot?</h3>
+<p>Contact me directly on Discord</p>
+<a href="https://discord.com/users/bluebarks" target="_blank">Hire Me</a>
+</div></div>
+</section><footer>
+Made by Bluey Barks • Discord Developer
+</footer></body>
+    
 </html>
