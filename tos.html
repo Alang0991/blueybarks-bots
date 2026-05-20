@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bluey Barks • Terms of Service</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* ========================================= */
+/* ROOT */
+/* ========================================= */
+
+:root{
+
+    --bg:#020617;
+
+    --bg2:#050816;
+
+    --card:rgba(255,255,255,0.05);
+
+    --stroke:rgba(255,255,255,0.08);
+
+    --text:#f8fafc;
+
+    --muted:#94a3b8;
+
+    --blue:#7dd3fc;
+
+    --cyan:#38bdf8;
+
+    --danger:#ef4444;
+
+    --success:#22c55e;
+}
+
+/* ========================================= */
+/* RESET */
+/* ========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(125,211,252,0.08), transparent 30%),
+        linear-gradient(180deg,#020617,#050816);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+    padding:60px 20px;
+}
+
+/* ========================================= */
+/* GRID BACKGROUND */
+/* ========================================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+    background-size:60px 60px;
+
+    mask-image:linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+/* ========================================= */
+/* CONTAINER */
+/* ========================================= */
+
+.container{
+
+    width:100%;
+
+    max-width:1150px;
+
+    margin:auto;
+}
+
+/* ========================================= */
+/* HERO */
+/* ========================================= */
+
+.hero{
+
+    text-align:center;
+
+    margin-bottom:70px;
+}
+
+.hero h1{
+
+    font-size:clamp(3rem,8vw,5.5rem);
+
+    font-weight:900;
+
+    letter-spacing:-3px;
+
+    margin-bottom:20px;
+
+    background:linear-gradient(90deg,#ffffff,#7dd3fc,#38bdf8);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+
+    max-width:850px;
+
+    margin:auto;
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    font-size:16px;
+}
+
+/* ========================================= */
+/* BUTTON */
+/* ========================================= */
+
+.back{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 22px;
+
+    border-radius:14px;
+
+    font-weight:800;
+
+    background:linear-gradient(135deg,var(--blue),var(--cyan));
+
+    color:#001018;
+
+    text-decoration:none;
+
+    transition:0.25s;
+}
+
+.back:hover{
+
+    transform:translateY(-4px);
+}
+
+/* ========================================= */
+/* CARDS */
+/* ========================================= */
+
+.card{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.03)
+        );
+
+    border:1px solid var(--stroke);
+
+    border-radius:30px;
+
+    padding:42px;
+
+    margin-bottom:28px;
+
+    backdrop-filter:blur(12px);
+}
+
+.card h2{
+
+    font-size:2rem;
+
+    color:var(--blue);
+
+    margin-bottom:20px;
+}
+
+.card h3{
+
+    margin-top:30px;
+
+    margin-bottom:14px;
+
+    font-size:1.2rem;
+}
+
+.card p{
+
+    color:#dbeafe;
+
+    line-height:1.9;
+
+    margin-bottom:18px;
+
+    font-size:15px;
+}
+
+.card ul{
+
+    padding-left:20px;
+}
+
+.card li{
+
+    margin-bottom:14px;
+
+    line-height:1.8;
+
+    color:#dbeafe;
+
+    font-size:15px;
+}
+
+/* ========================================= */
+/* WARNING CARD */
+/* ========================================= */
+
+.warning{
+
+    border:1px solid rgba(239,68,68,0.2);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(239,68,68,0.08),
+            rgba(239,68,68,0.03)
+        );
+}
+
+/* ========================================= */
+/* ALLOWED CARD */
+/* ========================================= */
+
+.allow{
+
+    border:1px solid rgba(34,197,94,0.2);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(34,197,94,0.08),
+            rgba(34,197,94,0.03)
+        );
+}
+
+/* ========================================= */
+/* FOOTER */
+/* ========================================= */
+
+.footer{
+
+    text-align:center;
+
+    margin-top:50px;
+
+    color:var(--muted);
+
+    padding-bottom:50px;
+}
+
+/* ========================================= */
+/* MOBILE */
+/* ========================================= */
+
+@media(max-width:1024px){
+
+    body{
+        padding:40px 16px;
+    }
+
+    .card{
+        padding:34px;
+    }
+
+    .hero{
+        margin-bottom:55px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:24px 12px;
+    }
+
+    .hero h1{
+
+        font-size:3rem;
+
+        line-height:1;
+    }
+
+    .hero p{
+
+        font-size:14px;
+
+        line-height:1.8;
+    }
+
+    .card{
+
+        padding:26px;
+
+        border-radius:24px;
+    }
+
+    .card h2{
+
+        font-size:1.6rem;
+    }
+
+    .card h3{
+
+        font-size:1.05rem;
+    }
+
+    .card p,
+    .card li{
+
+        font-size:14px;
+    }
+
+    .back{
+
+        width:100%;
+
+        text-align:center;
+    }
+}
+
+@media(max-width:480px){
+
+    .hero h1{
+
+        font-size:2.5rem;
+    }
+
+    .card{
+
+        padding:22px;
+    }
+
+    .card h2{
+
+        font-size:1.4rem;
+    }
+
+    .card p,
+    .card li{
+
+        line-height:1.7;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>Terms of Service</h1>
+
+<p>
+These Terms of Service apply to all services provided by Bluey Barks including
+Discord bot development, hosting, moderation systems, automation systems,
+custom coding, server infrastructure, support systems, and related services.
+By purchasing, commissioning, or using any services, you agree to all rules,
+restrictions, and terms listed below.
+</p>
+
+<a href="index.html" class="back">
+Return to Main Website
+</a>
+
+</div>
+
+<!-- GENERAL -->
+
+<div class="card">
+
+<h2>1. General Agreement</h2>
+
+<p>
+By using services provided by Bluey Barks, you acknowledge and agree to all
+Terms of Service listed on this page. These rules exist to ensure all services
+remain safe, professional, legal, secure, and compliant with Discord policies.
+</p>
+
+<p>
+Bluey Barks reserves the right to refuse, suspend, terminate, or blacklist
+services for any violation of these Terms of Service.
+</p>
+
+<p>
+Terms may be updated or modified at any time without prior notice.
+Continued use of services means you automatically agree to updated terms.
+</p>
+
+</div>
+
+<!-- ALLOWED -->
+
+<div class="card allow">
+
+<h2>2. Allowed Usage</h2>
+
+<p>
+The following types of projects and usage are generally allowed:
+</p>
+
+<ul>
+
+<li>Discord moderation bots.</li>
+
+<li>Community management systems.</li>
+
+<li>Roleplay community infrastructure.</li>
+
+<li>Gaming server utilities.</li>
+
+<li>Ticket systems.</li>
+
+<li>Reaction role systems.</li>
+
+<li>Verification systems.</li>
+
+<li>Community logging systems.</li>
+
+<li>Analytics and server statistics.</li>
+
+<li>Safe AI integrations following Discord policies.</li>
+
+<li>Automation systems for moderation and management.</li>
+
+<li>Private custom bots for personal servers.</li>
+
+<li>Educational projects and safe experiments.</li>
+
+<li>Entertainment-focused community systems.</li>
+
+<li>Professional support systems.</li>
+
+</ul>
+
+</div>
+
+<!-- STRICTLY PROHIBITED -->
+
+<div class="card warning">
+
+<h2>3. Strictly Prohibited Content</h2>
+
+<p>
+The following content, projects, communities, systems, or requests are STRICTLY
+FORBIDDEN and may result in immediate service termination, refusal,
+blacklisting, or reporting where necessary.
+</p>
+
+<h3>NSFW Content Is Strictly Forbidden</h3>
+
+<ul>
+
+<li>No NSFW Discord servers.</li>
+
+<li>No pornography-related communities.</li>
+
+<li>No explicit image systems.</li>
+
+<li>No adult-only moderation systems.</li>
+
+<li>No sexual roleplay bots.</li>
+
+<li>No fetish-related communities.</li>
+
+<li>No erotic AI systems.</li>
+
+<li>No explicit content automation.</li>
+
+<li>No NSFW ticket systems.</li>
+
+<li>No “18+ content distribution” systems.</li>
+
+<li>No adult verification systems.</li>
+
+<li>No hidden NSFW access systems.</li>
+
+<li>No sexually explicit AI generation.</li>
+
+</ul>
+
+<h3>AI Restrictions</h3>
+
+<ul>
+
+<li>No malicious AI systems.</li>
+
+<li>No harmful AI automation.</li>
+
+<li>No AI harassment tools.</li>
+
+<li>No AI spam systems.</li>
+
+<li>No AI phishing tools.</li>
+
+<li>No deepfake systems.</li>
+
+<li>No AI impersonation systems.</li>
+
+<li>No AI designed to spread misinformation.</li>
+
+<li>No AI moderation bypass systems.</li>
+
+<li>No AI intended for raids or attacks.</li>
+
+<li>No harmful scraping systems.</li>
+
+<li>No illegal AI automation.</li>
+
+</ul>
+
+<h3>Illegal Activity</h3>
+
+<ul>
+
+<li>No malware.</li>
+
+<li>No token loggers.</li>
+
+<li>No Discord nukers.</li>
+
+<li>No raid bots.</li>
+
+<li>No phishing tools.</li>
+
+<li>No account stealing systems.</li>
+
+<li>No crypto scams.</li>
+
+<li>No exploit distribution.</li>
+
+<li>No piracy-related systems.</li>
+
+<li>No harassment-focused systems.</li>
+
+<li>No stalking tools.</li>
+
+<li>No doxxing systems.</li>
+
+<li>No hate speech communities.</li>
+
+<li>No extremist organizations.</li>
+
+<li>No illegal marketplaces.</li>
+
+</ul>
+
+<h3>Discord Policy Violations</h3>
+
+<p>
+Any request violating Discord Terms of Service, Discord Developer Policy,
+or platform safety guidelines will be denied immediately.
+</p>
+
+</div>
+
+<!-- PAYMENTS -->
+
+<div class="card">
+
+<h2>4. Payments & Refunds</h2>
+
+<h3>Payments</h3>
+
+<ul>
+
+<li>Prices are listed in GBP unless stated otherwise.</li>
+
+<li>Partial or full upfront payment may be required.</li>
+
+<li>Development may pause until payment is received.</li>
+
+<li>Hosting payments must remain up to date.</li>
+
+<li>Failure to pay may result in suspension.</li>
+
+</ul>
+
+<h3>Refund Policy</h3>
+
+<ul>
+
+<li>No refunds after significant development work begins.</li>
+
+<li>No refunds for completed systems.</li>
+
+<li>No refunds for Terms of Service violations.</li>
+
+<li>No refunds for hosting after deployment.</li>
+
+<li>Chargebacks will result in permanent blacklisting.</li>
+
+</ul>
+
+</div>
+
+<!-- DEVELOPMENT -->
+
+<div class="card">
+
+<h2>5. Development Terms</h2>
+
+<ul>
+
+<li>Development times may vary based on complexity.</li>
+
+<li>Custom features may require additional payment.</li>
+
+<li>Large project changes may increase pricing.</li>
+
+<li>You must clearly explain requested systems before work begins.</li>
+
+<li>Bluey Barks reserves the right to reject projects.</li>
+
+<li>Abusive or disrespectful behavior may cancel services.</li>
+
+<li>Unrealistic deadlines are not guaranteed.</li>
+
+<li>Support availability may vary.</li>
+
+</ul>
+
+</div>
+
+<!-- HOSTING -->
+
+<div class="card">
+
+<h2>6. Hosting Terms</h2>
+
+<ul>
+
+<li>24/7 uptime is attempted but not guaranteed.</li>
+
+<li>Maintenance may temporarily affect services.</li>
+
+<li>Abuse of hosting resources is prohibited.</li>
+
+<li>Hosting may be suspended for violations.</li>
+
+<li>Failure to pay hosting fees may result in deletion of hosted files.</li>
+
+<li>Clients are responsible for securing their own Discord servers.</li>
+
+<li>Backups are recommended but not guaranteed.</li>
+
+</ul>
+
+</div>
+
+<!-- LIABILITY -->
+
+<div class="card">
+
+<h2>7. Liability</h2>
+
+<p>
+Bluey Barks is not responsible for damages, losses, moderation decisions,
+community actions, or third-party failures resulting from use of services.
+</p>
+
+<ul>
+
+<li>Discord outages or API failures.</li>
+
+<li>Loss of community members.</li>
+
+<li>Server moderation disputes.</li>
+
+<li>Misuse of provided systems.</li>
+
+<li>Security issues caused by poor server management.</li>
+
+<li>Third-party hosting problems.</li>
+
+<li>Data loss outside of controlled systems.</li>
+
+<li>Violations caused by server staff or users.</li>
+
+</ul>
+
+</div>
+
+<!-- TERMINATION -->
+
+<div class="card warning">
+
+<h2>8. Service Termination</h2>
+
+<p>
+Bluey Barks reserves the right to immediately terminate services for:
+</p>
+
+<ul>
+
+<li>NSFW usage.</li>
+
+<li>Illegal activity.</li>
+
+<li>Discord policy violations.</li>
+
+<li>Chargebacks or payment fraud.</li>
+
+<li>Abusive behavior.</li>
+
+<li>Harassment or threats.</li>
+
+<li>Attempting to exploit systems.</li>
+
+<li>Hosting abuse.</li>
+
+<li>Distribution of harmful content.</li>
+
+<li>Repeated rule violations.</li>
+
+</ul>
+
+</div>
+
+<!-- FINAL -->
+
+<div class="card">
+
+<h2>9. Final Agreement</h2>
+
+<p>
+By purchasing, requesting, or using services provided by Bluey Barks,
+you confirm that you have read, understood, and agreed to all Terms of Service
+listed above.
+</p>
+
+<p>
+If you do not agree to these terms, you must not use any services.
+</p>
+
+<p>
+For support or questions regarding these Terms of Service,
+contact Bluey Barks directly through Discord.
+</p>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+<p>
+© Bluey Barks • Advanced Discord Development
+</p>
+
+</div>
+
+</div>
+
+</body>
+
+                      </html>
