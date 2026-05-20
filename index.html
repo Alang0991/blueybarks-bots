@@ -1,334 +1,1202 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bluey Barks • Discord Developer</title><link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+
+<title>Bluey Barks • Advanced Discord Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
 
 :root{
-    --bg:#050816;
-    --card:rgba(255,255,255,0.04);
+    --bg:#020617;
+    --bg2:#071122;
+    --card:rgba(255,255,255,0.05);
     --stroke:rgba(255,255,255,0.08);
-    --text:#e2e8f0;
+
+    --text:#f8fafc;
     --muted:#94a3b8;
+
     --blue:#7dd3fc;
-    --blue2:#38bdf8;
+    --cyan:#38bdf8;
+    --purple:#818cf8;
+
+    --glow:rgba(56,189,248,0.35);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
 body{
-    font-family:Inter,sans-serif;
-    background:radial-gradient(circle at top,#0b1224,#050816);
+    font-family:'Inter',sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(129,140,248,0.15), transparent 30%),
+        linear-gradient(180deg, #020617 0%, #050816 50%, #020617 100%);
     color:var(--text);
     overflow-x:hidden;
 }
 
-a{color:inherit;text-decoration:none}
+/* GRID OVERLAY */
 
-/* NAV */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+    background-size:60px 60px;
+
+    mask-image:linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+
+    pointer-events:none;
+    z-index:-1;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* NAVBAR */
+
 nav{
     position:fixed;
     top:0;
     width:100%;
     z-index:999;
-    backdrop-filter:blur(18px);
-    background:rgba(5,8,22,0.6);
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(2,6,23,0.7);
+
     border-bottom:1px solid var(--stroke);
 }
 
 .nav{
-    max-width:1200px;
+    max-width:1350px;
     margin:auto;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 22px;
-    flex-wrap:wrap;
+
+    padding:18px 24px;
 }
 
 .logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo-box{
+    width:42px;
+    height:42px;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg, var(--blue), var(--cyan));
+
+    box-shadow:0 0 30px var(--glow);
+}
+
+.logo h2{
+    font-size:17px;
     font-weight:900;
     letter-spacing:1px;
-    color:var(--blue);
-    font-size:18px;
 }
 
 .links{
     display:flex;
-    gap:18px;
-    flex-wrap:wrap;
+    gap:24px;
 }
 
 .links a{
-    font-size:14px;
     color:var(--muted);
+    font-size:14px;
+    font-weight:600;
     transition:0.2s;
-    font-weight:500;
 }
 
-.links a:hover{color:white}
+.links a:hover{
+    color:white;
+}
 
-/* HERO (BIGGER / MORE PREMIUM) */
+/* HERO */
+
 .hero{
     min-height:100vh;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    text-align:center;
-    padding:140px 20px 80px;
+
+    padding:140px 20px 100px;
 }
 
-.hero h1{
-    font-size:clamp(3.2rem,9vw,7rem);
-    font-weight:900;
-    background:linear-gradient(90deg,#fff,#7dd3fc);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    letter-spacing:-2px;
-}
+.hero-container{
+    max-width:1350px;
+    width:100%;
 
-.hero p{
-    max-width:900px;
-    margin:22px auto;
-    color:var(--muted);
-    line-height:1.9;
-    font-size:16px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+
+    gap:70px;
+    align-items:center;
 }
 
 .badge{
     display:inline-flex;
-    gap:8px;
-    padding:10px 16px;
-    border:1px solid var(--stroke);
+    align-items:center;
+    gap:10px;
+
+    padding:12px 18px;
+
     border-radius:999px;
-    background:rgba(255,255,255,0.03);
+
+    background:rgba(255,255,255,0.04);
+
+    border:1px solid rgba(125,211,252,0.15);
+
+    color:#dbeafe;
+
     font-size:13px;
-    color:#cbd5e1;
+    font-weight:600;
+
+    margin-bottom:28px;
 }
 
-.btns{
+.hero h1{
+    font-size:clamp(4rem, 10vw, 7rem);
+
+    line-height:0.95;
+
+    font-weight:900;
+
+    letter-spacing:-4px;
+
+    margin-bottom:26px;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #7dd3fc,
+        #38bdf8
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+
+    line-height:1.9;
+
+    font-size:16px;
+
+    max-width:720px;
+}
+
+/* BUTTONS */
+
+.hero-buttons{
     display:flex;
-    gap:12px;
-    justify-content:center;
+    gap:16px;
     flex-wrap:wrap;
-    margin-top:35px;
+
+    margin-top:38px;
 }
 
 .btn{
-    padding:14px 20px;
-    border-radius:12px;
-    font-weight:700;
+    padding:15px 22px;
+
+    border-radius:14px;
+
     font-size:14px;
-    border:1px solid var(--stroke);
+    font-weight:700;
+
     transition:0.25s;
 }
 
 .primary{
-    background:linear-gradient(135deg,var(--blue),var(--blue2));
+    background:linear-gradient(135deg, var(--blue), var(--cyan));
+
     color:#001018;
-    border:none;
-    box-shadow:0 10px 40px rgba(56,189,248,0.15);
+
+    box-shadow:0 10px 40px rgba(56,189,248,0.2);
 }
 
-.primary:hover{transform:translateY(-3px)}
-.secondary:hover{background:rgba(255,255,255,0.06)}
+.primary:hover{
+    transform:translateY(-4px);
+}
 
-/* SECTIONS */
+.secondary{
+    border:1px solid var(--stroke);
+
+    background:rgba(255,255,255,0.03);
+}
+
+.secondary:hover{
+    background:rgba(255,255,255,0.06);
+}
+
+/* HERO CARD */
+
+.hero-card{
+    position:relative;
+
+    padding:30px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.06),
+            rgba(255,255,255,0.03)
+        );
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    overflow:hidden;
+}
+
+.hero-card::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-200px;
+
+    background:
+        radial-gradient(circle, rgba(56,189,248,0.15), transparent 50%);
+
+    animation:rotateGlow 14s linear infinite;
+}
+
+@keyframes rotateGlow{
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.hero-card-content{
+    position:relative;
+    z-index:2;
+}
+
+.mini-stat{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.mini-stat:last-child{
+    border-bottom:none;
+}
+
+.mini-stat h3{
+    font-size:14px;
+    color:var(--muted);
+}
+
+.mini-stat strong{
+    font-size:18px;
+}
+
+/* SECTION */
+
 section{
-    padding:110px 20px;
+    padding:120px 20px;
 }
 
 .container{
-    max-width:1200px;
+    max-width:1350px;
     margin:auto;
 }
 
-.title{
+.section-title{
     text-align:center;
-    font-size:2.8rem;
+
+    font-size:3rem;
     font-weight:900;
-    margin-bottom:12px;
-    letter-spacing:-1px;
+
+    margin-bottom:16px;
+
+    letter-spacing:-2px;
 }
 
-.sub{
+.section-sub{
     text-align:center;
+
     color:var(--muted);
+
     max-width:850px;
-    margin:0 auto 55px;
-    font-size:15px;
+
+    margin:0 auto 70px;
+
     line-height:1.8;
 }
 
 /* GRID */
+
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:24px;
 }
 
+/* CARD */
+
 .card{
-    padding:26px;
-    border-radius:20px;
-    background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
-    border:1px solid var(--stroke);
-    transition:0.25s;
-    backdrop-filter:blur(10px);
+    position:relative;
+
+    padding:32px;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.03)
+        );
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:0.3s;
 }
 
 .card:hover{
     transform:translateY(-8px);
-    border-color:rgba(125,211,252,0.4);
-    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+
+    border-color:rgba(125,211,252,0.3);
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
 }
 
-.card h3{margin-bottom:10px;font-size:18px}
-.card p{color:var(--muted);font-size:14px;line-height:1.7}
+.card-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(125,211,252,0.2),
+            rgba(56,189,248,0.15)
+        );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    margin-bottom:22px;
+}
+
+.card h3{
+    font-size:21px;
+
+    margin-bottom:12px;
+}
+
+.card p{
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:14px;
+}
 
 /* FEATURES */
-.tags{
+
+.features{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
+    gap:12px;
+
     justify-content:center;
 }
 
-.tag{
-    padding:9px 13px;
+.feature{
+    padding:12px 16px;
+
     border-radius:999px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid var(--stroke);
+
+    background:rgba(255,255,255,0.04);
+
+    border:1px solid rgba(255,255,255,0.08);
+
     font-size:13px;
-    color:#cbd5e1;
+
+    color:#dbeafe;
 }
 
-/* PRICE */
+/* PACKAGE CARDS */
+
+.package{
+    position:relative;
+
+    overflow:hidden;
+}
+
+.package::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--cyan),
+            var(--purple)
+        );
+}
+
 .price{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-top:12px;
+    margin:24px 0;
+}
+
+.price h1{
+    font-size:3rem;
+    font-weight:900;
 }
 
 .price span{
-    font-size:12px;
-    padding:5px 9px;
-    border-radius:8px;
-    background:rgba(125,211,248,0.08);
-    border:1px solid rgba(125,211,248,0.2);
+    color:var(--muted);
+    font-size:15px;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-    .links{display:none;}
-    .hero h1{font-size:3.2rem;}
-    .btns{flex-direction:column;}
-    .btn{width:100%;}
-    .title{font-size:2.2rem;}
+.package ul{
+    list-style:none;
+    margin-top:20px;
 }
+
+.package ul li{
+    margin-bottom:14px;
+
+    color:#dbeafe;
+
+    font-size:14px;
+}
+
+/* SHOWCASE */
+
+.showcase{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:24px;
+}
+
+.showcase-card{
+    padding:26px;
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.04),
+            rgba(255,255,255,0.02)
+        );
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.showcase-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+.showcase-tag{
+    padding:8px 12px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    background:rgba(56,189,248,0.12);
+
+    border:1px solid rgba(56,189,248,0.2);
+}
+
+.progress{
+    height:12px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,0.06);
+
+    overflow:hidden;
+
+    margin-top:18px;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--cyan)
+        );
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+}
+
+.contact-box{
+    max-width:850px;
+    margin:auto;
+
+    padding:50px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.03)
+        );
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact h2{
+    font-size:3rem;
+
+    margin-bottom:18px;
+}
+
+.contact p{
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+.contact-button{
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:16px 24px;
+
+    border-radius:14px;
+
+    font-weight:800;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--cyan)
+        );
+
+    color:#001018;
+
+    transition:0.25s;
+}
+
+.contact-button:hover{
+    transform:translateY(-4px);
+}
+
+/* FOOTER */
 
 footer{
     text-align:center;
-    padding:60px;
+
+    padding:60px 20px;
+
     color:#64748b;
-    border-top:1px solid var(--stroke);
+
+    border-top:1px solid rgba(255,255,255,0.06);
 }
 
-/* HIRE */
-.hire{
-    text-align:center;
-    margin-top:30px;
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .hero-container{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        text-align:center;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
 }
 
-.hire a{
-    display:inline-block;
-    margin-top:12px;
-    padding:14px 20px;
-    border-radius:12px;
-    background:linear-gradient(135deg,#7dd3fc,#38bdf8);
-    color:#001018;
-    font-weight:800;
+@media(max-width:768px){
+
+    .links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:4rem;
+    }
+
+    .section-title{
+        font-size:2.3rem;
+    }
+
+    .contact-box{
+        padding:35px 24px;
+    }
 }
 
-</style></head>
-<body><nav>
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
 <div class="nav">
-<div class="logo">Bluey Barks</div>
+
+<div class="logo">
+<div class="logo-box"></div>
+<h2>Bluey Barks</h2>
+</div>
+
 <div class="links">
 <a href="#about">About</a>
-<a href="#stats">Stats</a>
+<a href="#services">Services</a>
 <a href="#features">Features</a>
 <a href="#packages">Packages</a>
-<a href="#hire">Hire Me</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+<a href="tos.html">TOS</a>
 </div>
+
 </div>
-</nav><header class="hero">
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="hero-container">
+
 <div>
-<div class="badge">Discord Developer • Python • Automation</div>
-<h1>Bluey Barks</h1>
-<p>I build modern Discord bots focused on automation, moderation, security, and scalable community systems designed for real servers.</p>
-<div class="btns">
-<a class="btn primary" href="#packages">View Pricing</a>
-<a class="btn secondary" href="#features">Features</a>
-<a class="btn secondary" href="https://github.com">GitHub</a>
+
+<div class="badge">
+⚡ Advanced Discord Developer • Python • Security Systems
 </div>
+
+<h1>
+Building Modern<br>
+Discord Infrastructure
+</h1>
+
+<p>
+I develop advanced Discord bots focused on moderation, security,
+automation, performance, and scalable infrastructure for modern
+communities. Every system is designed to feel fast, professional,
+secure, and easy to manage.
+</p>
+
+<div class="hero-buttons">
+
+<a class="btn primary" href="#packages">
+View Packages
+</a>
+
+<a class="btn secondary" href="#projects">
+See Projects
+</a>
+
+<a class="btn secondary" href="#contact">
+Hire Me
+</a>
+
 </div>
-</header><section id="stats">
+
+</div>
+
+<div class="hero-card">
+
+<div class="hero-card-content">
+
+<div class="mini-stat">
+<h3>Discord Bots Built</h3>
+<strong>10+</strong>
+</div>
+
+<div class="mini-stat">
+<h3>Development Experience</h3>
+<strong>1+ Year</strong>
+</div>
+
+<div class="mini-stat">
+<h3>Main Language</h3>
+<strong>Python</strong>
+</div>
+
+<div class="mini-stat">
+<h3>System Uptime</h3>
+<strong>24/7 Hosting</strong>
+</div>
+
+<div class="mini-stat">
+<h3>Focus</h3>
+<strong>Security + Automation</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ABOUT -->
+
+<section id="about">
+
 <div class="container">
-<h2 class="title">Stats</h2>
-<p class="sub">Overview of development experience and systems built.</p>
+
+<h2 class="section-title">
+About Me
+</h2>
+
+<p class="section-sub">
+I create advanced Discord systems designed for serious communities,
+roleplay groups, gaming servers, moderation teams, and growing projects.
+My goal is to build infrastructure that feels modern, powerful,
+and reliable while remaining easy to use.
+</p>
+
 <div class="grid">
-<div class="card"><h3>10+ Bots</h3><p>Active systems across communities.</p></div>
-<div class="card"><h3>1+ Year</h3><p>Discord development experience.</p></div>
-<div class="card"><h3>Python</h3><p>Main development language.</p></div>
-<div class="card"><h3>24/7 Systems</h3><p>Always online infrastructure setups.</p></div>
+
+<div class="card">
+
+<div class="card-icon">
+🛡️
 </div>
+
+<h3>Security Systems</h3>
+
+<p>
+Advanced anti-raid, anti-nuke, permission monitoring, logging,
+and automated protection systems built for community safety.
+</p>
+
 </div>
-</section><section id="features">
+
+<div class="card">
+
+<div class="card-icon">
+⚙️
+</div>
+
+<h3>Automation</h3>
+
+<p>
+Automated moderation workflows, role systems, applications,
+tickets, logging, alerts, backups, and community management tools.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+🚀
+</div>
+
+<h3>Performance</h3>
+
+<p>
+Bots optimized for speed, uptime, scalability, and reliability
+using efficient Python development practices.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section id="features">
+
 <div class="container">
-<h2 class="title">Features</h2>
-<p class="sub">All systems included in my Discord bots.</p>
-<div class="tags">
-<span class="tag">Moderation</span>
-<span class="tag">AutoMod</span>
-<span class="tag">Anti-Raid</span>
-<span class="tag">Logging</span>
-<span class="tag">Tickets</span>
-<span class="tag">Security</span>
-<span class="tag">Automation</span>
-<span class="tag">Reaction Roles</span>
+
+<h2 class="section-title">
+Core Features
+</h2>
+
+<p class="section-sub">
+Everything included in my advanced Discord development systems.
+</p>
+
+<div class="features">
+
+<div class="feature">Moderation</div>
+<div class="feature">Auto Moderation</div>
+<div class="feature">Anti Raid</div>
+<div class="feature">Anti Nuke</div>
+<div class="feature">Security Logging</div>
+<div class="feature">Ticket Systems</div>
+<div class="feature">Applications</div>
+<div class="feature">Reaction Roles</div>
+<div class="feature">Economy Systems</div>
+<div class="feature">Custom Commands</div>
+<div class="feature">AI Integrations</div>
+<div class="feature">Giveaways</div>
+<div class="feature">Verification</div>
+<div class="feature">Database Systems</div>
+<div class="feature">Backups</div>
+<div class="feature">Level Systems</div>
+
 </div>
+
 </div>
-</section><section id="packages">
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
 <div class="container">
-<h2 class="title">Packages & Hosting</h2>
+
+<h2 class="section-title">
+Services
+</h2>
+
+<p class="section-sub">
+Professional Discord development tailored to your server needs.
+</p>
+
 <div class="grid">
+
 <div class="card">
-<h3>Starter</h3>
-<p>Basic moderation bot for small servers.</p>
-<div class="price"><span>£40</span><span>€47</span><span>$50</span></div>
-<p>£3 / €3.5 / $4 monthly hosting</p>
+
+<div class="card-icon">
+🤖
 </div>
+
+<h3>Custom Discord Bots</h3>
+
+<p>
+Fully custom Discord bots built specifically for your community,
+brand, moderation style, and feature requirements.
+</p>
+
+</div>
+
 <div class="card">
-<h3>Standard</h3>
-<p>Moderation, tickets, logs, automation systems.</p>
-<div class="price"><span>£60</span><span>€70</span><span>$75</span></div>
-<p>£5 / €6 / $6.5 monthly hosting</p>
+
+<div class="card-icon">
+🧠
 </div>
+
+<h3>Advanced Systems</h3>
+
+<p>
+Complex systems including anti-nuke infrastructure,
+economies, analytics dashboards, and automation frameworks.
+</p>
+
+</div>
+
 <div class="card">
-<h3>Advanced</h3>
-<p>Anti-raid + security + custom systems.</p>
-<div class="price"><span>£90</span><span>€105</span><span>$115</span></div>
-<p>£8 / €9 / $10 monthly hosting</p>
+
+<div class="card-icon">
+☁️
 </div>
-</div><div class="hire" id="hire">
-<h3>Hire Me</h3>
-<p>Contact me on Discord via <strong>blueybarks</strong></p>
-<a href="#">Contact me on Discord</a>
+
+<h3>Hosting Setup</h3>
+
+<p>
+24/7 hosting configuration, deployment support,
+performance optimization, and infrastructure setup.
+</p>
+
 </div>
+
 </div>
-</section><footer>
-Made by Bluey Barks • Discord Developer • Python Automation
-</footer></body>
-</html>
+
+</div>
+
+</section>
+
+<!-- PACKAGES -->
+
+<section id="packages">
+
+<div class="container">
+
+<h2 class="section-title">
+Packages & Pricing
+</h2>
+
+<p class="section-sub">
+Flexible pricing designed for communities of all sizes.
+</p>
+
+<div class="grid">
+
+<div class="card package">
+
+<h3>Starter Package</h3>
+
+<div class="price">
+<h1>£40</h1>
+<span>Basic Community Bot</span>
+</div>
+
+<ul>
+<li>✔ Moderation Commands</li>
+<li>✔ Basic Logging</li>
+<li>✔ Reaction Roles</li>
+<li>✔ Welcome System</li>
+<li>✔ Basic Setup Support</li>
+</ul>
+
+<p style="margin-top:24px;color:var(--muted);">
+Hosting: £3/month
+</p>
+
+</div>
+
+<div class="card package">
+
+<h3>Professional Package</h3>
+
+<div class="price">
+<h1>£80</h1>
+<span>Advanced Community Infrastructure</span>
+</div>
+
+<ul>
+<li>✔ Full Moderation System</li>
+<li>✔ Ticket Infrastructure</li>
+<li>✔ Logging + Security</li>
+<li>✔ Applications</li>
+<li>✔ Automation Systems</li>
+<li>✔ Custom Commands</li>
+</ul>
+
+<p style="margin-top:24px;color:var(--muted);">
+Hosting: £6/month
+</p>
+
+</div>
+
+<div class="card package">
+
+<h3>Enterprise Package</h3>
+
+<div class="price">
+<h1>£150</h1>
+<span>High-End Custom Infrastructure</span>
+</div>
+
+<ul>
+<li>✔ Anti-Nuke Systems</li>
+<li>✔ Advanced Security</li>
+<li>✔ AI Integrations</li>
+<li>✔ Databases</li>
+<li>✔ Custom Dashboards</li>
+<li>✔ Premium Optimization</li>
+<li>✔ Priority Support</li>
+</ul>
+
+<p style="margin-top:24px;color:var(--muted);">
+Hosting: £10/month
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title">
+Project Showcase
+</h2>
+
+<p class="section-sub">
+Examples of systems and infrastructure capabilities.
+</p>
+
+<div class="showcase">
+
+<div class="showcase-card">
+
+<div class="showcase-top">
+
+<h3>Moderation Core</h3>
+
+<div class="showcase-tag">
+Security
+</div>
+
+</div>
+
+<p>
+Advanced moderation system with anti-raid detection,
+permission monitoring, logging, and automated punishments.
+</p>
+
+<div class="progress">
+<span style="width:95%"></span>
+</div>
+
+</div>
+
+<div class="showcase-card">
+
+<div class="showcase-top">
+
+<h3>Ticket Infrastructure</h3>
+
+<div class="showcase-tag">
+Support
+</div>
+
+</div>
+
+<p>
+Professional ticket management system with transcripts,
+categories, automation, and staff management tools.
+</p>
+
+<div class="progress">
+<span style="width:90%"></span>
+</div>
+
+</div>
+
+<div class="showcase-card">
+
+<div class="showcase-top">
+
+<h3>Automation Systems</h3>
+
+<div class="showcase-tag">
+Automation
+</div>
+
+</div>
+
+<p>
+Advanced workflows designed to reduce manual moderation
+and improve server management efficiency.
+</p>
+
+<div class="progress">
+<span style="width:92%"></span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="contact-box">
+
+<h2>
+Hire Me
+</h2>
+
+<p>
+Looking for a professional Discord developer for your project,
+community, roleplay server, or business infrastructure?
+Contact me directly on Discord.
+</p>
+
+<a href="#" class="contact-button">
+Discord: blueybarks
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+Made by Bluey Barks • Advanced Discord Developer • Python Automation
+</p>
+
+</footer>
+
+</body>
+    </html>
