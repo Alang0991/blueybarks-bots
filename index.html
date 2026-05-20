@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Bluey Barks • Advanced Discord Developer</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
+/* ========================================= */
+/* ROOT */
+/* ========================================= */
+
 :root{
+
     --bg:#020617;
+
     --bg2:#071122;
+
     --card:rgba(255,255,255,0.05);
+
     --stroke:rgba(255,255,255,0.08);
 
     --text:#f8fafc;
+
     --muted:#94a3b8;
 
     --blue:#7dd3fc;
+
     --cyan:#38bdf8;
+
     --purple:#818cf8;
 
     --glow:rgba(56,189,248,0.35);
 }
+
+/* ========================================= */
+/* RESET */
+/* ========================================= */
 
 *{
     margin:0;
@@ -35,6 +54,1345 @@
     box-sizing:border-box;
     scroll-behavior:smooth;
 }
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(129,140,248,0.15), transparent 30%),
+        linear-gradient(180deg,#020617 0%,#050816 50%,#020617 100%);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+}
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+    background-size:60px 60px;
+
+    mask-image:linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* ========================================= */
+/* NAVBAR */
+/* ========================================= */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+
+    width:100%;
+
+    z-index:999;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(2,6,23,0.7);
+
+    border-bottom:1px solid var(--stroke);
+}
+
+.nav{
+
+    max-width:1350px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 24px;
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+}
+
+.logo-box{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,var(--blue),var(--cyan));
+
+    box-shadow:0 0 30px var(--glow);
+}
+
+.logo h2{
+
+    font-size:17px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.links{
+
+    display:flex;
+
+    gap:16px;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+}
+
+.links a{
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:0.25s;
+}
+
+.links a:hover{
+
+    color:white;
+}
+
+/* ========================================= */
+/* TOS NAV BUTTON */
+/* ========================================= */
+
+.tos-nav-btn{
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--cyan)
+        );
+
+    color:#001018 !important;
+
+    font-weight:800 !important;
+
+    box-shadow:0 8px 25px rgba(56,189,248,0.25);
+}
+
+.tos-nav-btn:hover{
+
+    transform:translateY(-2px);
+
+    color:#001018 !important;
+}
+
+/* ========================================= */
+/* HERO */
+/* ========================================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:140px 20px 100px;
+}
+
+.hero-container{
+
+    max-width:1350px;
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:1.1fr 0.9fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,0.04);
+
+    border:1px solid rgba(125,211,252,0.15);
+
+    color:#dbeafe;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    margin-bottom:28px;
+}
+
+.hero h1{
+
+    font-size:clamp(4rem,10vw,7rem);
+
+    line-height:0.95;
+
+    font-weight:900;
+
+    letter-spacing:-4px;
+
+    margin-bottom:26px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #7dd3fc,
+            #38bdf8
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    font-size:16px;
+
+    max-width:720px;
+}
+
+/* ========================================= */
+/* BUTTONS */
+/* ========================================= */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+    margin-top:38px;
+}
+
+.btn{
+
+    padding:15px 22px;
+
+    border-radius:14px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    transition:0.25s;
+
+    text-align:center;
+}
+
+.primary{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--cyan)
+        );
+
+    color:#001018;
+
+    box-shadow:0 10px 40px rgba(56,189,248,0.2);
+}
+
+.primary:hover{
+
+    transform:translateY(-4px);
+}
+
+.secondary{
+
+    border:1px solid var(--stroke);
+
+    background:rgba(255,255,255,0.03);
+}
+
+.secondary:hover{
+
+    background:rgba(255,255,255,0.06);
+}
+
+.tos-btn{
+
+    border:1px solid rgba(125,211,252,0.2);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(125,211,252,0.08),
+            rgba(56,189,248,0.06)
+        );
+}
+
+/* ========================================= */
+/* HERO CARD */
+/* ========================================= */
+
+.hero-card{
+
+    position:relative;
+
+    padding:30px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.06),
+            rgba(255,255,255,0.03)
+        );
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    overflow:hidden;
+}
+
+.hero-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-200px;
+
+    background:
+        radial-gradient(circle, rgba(56,189,248,0.15), transparent 50%);
+
+    animation:rotateGlow 14s linear infinite;
+}
+
+@keyframes rotateGlow{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.hero-card-content{
+
+    position:relative;
+
+    z-index:2;
+}
+
+.mini-stat{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.mini-stat:last-child{
+
+    border-bottom:none;
+}
+
+.mini-stat h3{
+
+    font-size:14px;
+
+    color:var(--muted);
+}
+
+.mini-stat strong{
+
+    font-size:18px;
+}
+
+/* ========================================= */
+/* SECTIONS */
+/* ========================================= */
+
+section{
+
+    padding:120px 20px;
+}
+
+.container{
+
+    max-width:1350px;
+
+    margin:auto;
+}
+
+.section-title{
+
+    text-align:center;
+
+    font-size:3rem;
+
+    font-weight:900;
+
+    margin-bottom:16px;
+
+    letter-spacing:-2px;
+}
+
+.section-sub{
+
+    text-align:center;
+
+    color:var(--muted);
+
+    max-width:850px;
+
+    margin:0 auto 70px;
+
+    line-height:1.8;
+}
+
+/* ========================================= */
+/* GRID */
+/* ========================================= */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:24px;
+}
+
+/* ========================================= */
+/* CARDS */
+/* ========================================= */
+
+.card{
+
+    position:relative;
+
+    padding:32px;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.03)
+        );
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:0.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(125,211,252,0.3);
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+}
+
+.card-icon{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(125,211,252,0.2),
+            rgba(56,189,248,0.15)
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    margin-bottom:22px;
+}
+
+.card h3{
+
+    font-size:21px;
+
+    margin-bottom:12px;
+}
+
+.card p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+/* ========================================= */
+/* FEATURES */
+/* ========================================= */
+
+.features{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    justify-content:center;
+}
+
+.feature{
+
+    padding:12px 16px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,0.04);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    font-size:13px;
+
+    color:#dbeafe;
+}
+
+/* ========================================= */
+/* PACKAGE */
+/* ========================================= */
+
+.package{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.package::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--cyan),
+            var(--purple)
+        );
+}
+
+.price{
+
+    margin:24px 0;
+}
+
+.price h1{
+
+    font-size:3rem;
+
+    font-weight:900;
+}
+
+.price span{
+
+    color:var(--muted);
+
+    font-size:15px;
+}
+
+.package ul{
+
+    list-style:none;
+
+    margin-top:20px;
+}
+
+.package ul li{
+
+    margin-bottom:14px;
+
+    color:#dbeafe;
+
+    font-size:14px;
+}
+
+/* ========================================= */
+/* CONTACT */
+/* ========================================= */
+
+.contact{
+
+    text-align:center;
+}
+
+.contact-box{
+
+    max-width:850px;
+
+    margin:auto;
+
+    padding:50px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.03)
+        );
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact h2{
+
+    font-size:3rem;
+
+    margin-bottom:18px;
+}
+
+.contact p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+.contact-button{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:16px 24px;
+
+    border-radius:14px;
+
+    font-weight:800;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--cyan)
+        );
+
+    color:#001018;
+
+    transition:0.25s;
+}
+
+.contact-button:hover{
+
+    transform:translateY(-4px);
+}
+
+/* ========================================= */
+/* FOOTER */
+/* ========================================= */
+
+footer{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    color:#64748b;
+
+    border-top:1px solid rgba(255,255,255,0.06);
+}
+
+/* ========================================= */
+/* MOBILE */
+/* ========================================= */
+
+@media(max-width:1000px){
+
+    .hero-container{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+    }
+
+    .hero-card{
+
+        max-width:700px;
+
+        margin:auto;
+    }
+}
+
+@media(max-width:768px){
+
+    body{
+
+        overflow-x:hidden;
+    }
+
+    nav{
+
+        position:relative;
+    }
+
+    .nav{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        padding:20px 16px;
+    }
+
+    .links{
+
+        justify-content:center;
+    }
+
+    .links a{
+
+        padding:10px 14px;
+
+        border-radius:10px;
+
+        background:rgba(255,255,255,0.03);
+
+        border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .hero{
+
+        padding:80px 18px 70px;
+    }
+
+    .hero h1{
+
+        font-size:3.3rem;
+
+        line-height:0.95;
+
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+
+        font-size:14px;
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+        width:100%;
+    }
+
+    .btn{
+
+        width:100%;
+    }
+
+    .section-title{
+
+        font-size:2.2rem;
+    }
+
+    section{
+
+        padding:80px 16px;
+    }
+
+    .grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .card{
+
+        padding:26px;
+    }
+
+    .contact-box{
+
+        padding:30px 22px;
+    }
+
+    .contact h2{
+
+        font-size:2.2rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="nav">
+
+<div class="logo">
+
+<div class="logo-box"></div>
+
+<h2>Bluey Barks</h2>
+
+</div>
+
+<div class="links">
+
+<a href="#about">About</a>
+
+<a href="#services">Services</a>
+
+<a href="#features">Features</a>
+
+<a href="#packages">Packages</a>
+
+<a href="#contact">Contact</a>
+
+<a class="tos-nav-btn" href="tos.html">
+TOS
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="hero-container">
+
+<div>
+
+<div class="badge">
+⚡ Advanced Discord Developer • Python • Security Systems
+</div>
+
+<h1>
+Building Modern<br>
+Discord Infrastructure
+</h1>
+
+<p>
+I develop advanced Discord bots focused on moderation, security,
+automation, scalability, and infrastructure for modern communities.
+Every system is designed to feel professional, powerful, secure,
+and easy to manage.
+</p>
+
+<div class="hero-buttons">
+
+<a class="btn primary" href="#packages">
+View Packages
+</a>
+
+<a class="btn secondary" href="#services">
+Services
+</a>
+
+<a class="btn secondary tos-btn" href="tos.html">
+View Terms
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-card">
+
+<div class="hero-card-content">
+
+<div class="mini-stat">
+<h3>Discord Bots Built</h3>
+<strong>10+</strong>
+</div>
+
+<div class="mini-stat">
+<h3>Development Experience</h3>
+<strong>1+ Year</strong>
+</div>
+
+<div class="mini-stat">
+<h3>Main Language</h3>
+<strong>Python</strong>
+</div>
+
+<div class="mini-stat">
+<h3>Hosting</h3>
+<strong>24/7 Systems</strong>
+</div>
+
+<div class="mini-stat">
+<h3>Focus</h3>
+<strong>Security + Automation</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title">
+About Me
+</h2>
+
+<p class="section-sub">
+I create advanced Discord systems designed for communities,
+gaming servers, moderation teams, and growing projects.
+My goal is to build infrastructure that feels modern,
+professional, scalable, and reliable.
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-icon">
+🛡️
+</div>
+
+<h3>Security Systems</h3>
+
+<p>
+Advanced anti-raid, anti-nuke, logging,
+permission monitoring, and automated
+protection systems for community safety.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+⚙️
+</div>
+
+<h3>Automation</h3>
+
+<p>
+Automated moderation workflows, applications,
+tickets, alerts, role systems, backups,
+and server management tools.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+🚀
+</div>
+
+<h3>Performance</h3>
+
+<p>
+Bots optimized for speed, uptime,
+stability, scalability, and reliability
+using efficient Python development.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section id="features">
+
+<div class="container">
+
+<h2 class="section-title">
+Core Features
+</h2>
+
+<p class="section-sub">
+Everything included in my advanced Discord systems.
+</p>
+
+<div class="features">
+
+<div class="feature">Moderation</div>
+
+<div class="feature">Auto Moderation</div>
+
+<div class="feature">Anti Raid</div>
+
+<div class="feature">Anti Nuke</div>
+
+<div class="feature">Logging</div>
+
+<div class="feature">Tickets</div>
+
+<div class="feature">Applications</div>
+
+<div class="feature">Reaction Roles</div>
+
+<div class="feature">Economy</div>
+
+<div class="feature">Giveaways</div>
+
+<div class="feature">Verification</div>
+
+<div class="feature">Databases</div>
+
+<div class="feature">Backups</div>
+
+<div class="feature">Automation</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<div class="container">
+
+<h2 class="section-title">
+Services
+</h2>
+
+<p class="section-sub">
+Professional Discord development tailored
+to your server needs.
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-icon">
+🤖
+</div>
+
+<h3>Custom Discord Bots</h3>
+
+<p>
+Fully custom Discord bots built
+for your community and moderation style.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+🧠
+</div>
+
+<h3>Advanced Systems</h3>
+
+<p>
+Complex systems including anti-nuke,
+automation frameworks, analytics,
+and moderation infrastructure.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+☁️
+</div>
+
+<h3>Hosting Setup</h3>
+
+<p>
+24/7 hosting configuration,
+deployment support,
+and optimization systems.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PACKAGES -->
+
+<section id="packages">
+
+<div class="container">
+
+<h2 class="section-title">
+Packages & Pricing
+</h2>
+
+<p class="section-sub">
+Flexible pricing designed for all community sizes.
+</p>
+
+<div class="grid">
+
+<div class="card package">
+
+<h3>Starter Package</h3>
+
+<div class="price">
+
+<h1>£30</h1>
+
+<span>Basic Community Bot</span>
+
+</div>
+
+<ul>
+
+<li>✔ Moderation Commands</li>
+
+<li>✔ Logging</li>
+
+<li>✔ Reaction Roles</li>
+
+<li>✔ Welcome System</li>
+
+<li>✔ Setup Support</li>
+
+</ul>
+
+<p style="margin-top:24px;color:var(--muted);">
+Hosting: £3/month
+</p>
+
+</div>
+
+<div class="card package">
+
+<h3>Professional Package</h3>
+
+<div class="price">
+
+<h1>£60</h1>
+
+<span>Advanced Infrastructure</span>
+
+</div>
+
+<ul>
+
+<li>✔ Full Moderation</li>
+
+<li>✔ Tickets</li>
+
+<li>✔ Security Systems</li>
+
+<li>✔ Applications</li>
+
+<li>✔ Automation</li>
+
+<li>✔ Custom Commands</li>
+
+</ul>
+
+<p style="margin-top:24px;color:var(--muted);">
+Hosting: £6/month
+</p>
+
+</div>
+
+<div class="card package">
+
+<h3>Enterprise Package</h3>
+
+<div class="price">
+
+<h1>£90</h1>
+
+<span>Premium Infrastructure</span>
+
+</div>
+
+<ul>
+
+<li>✔ Anti-Nuke</li>
+
+<li>✔ Advanced Security</li>
+
+<li>✔ AI Integrations</li>
+
+<li>✔ Databases</li>
+
+<li>✔ Dashboards</li>
+
+<li>✔ Optimization</li>
+
+<li>✔ Priority Support</li>
+
+</ul>
+
+<p style="margin-top:24px;color:var(--muted);">
+Hosting: £10/month
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="contact-box">
+
+<h2>
+Hire Me
+</h2>
+
+<p>
+Looking for a professional Discord developer
+for your community or infrastructure project?
+Contact me directly on Discord.
+</p>
+
+<a href="#" class="contact-button">
+Discord: blueybarks
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+Made by Bluey Barks • Advanced Discord Developer
+</p>
+
+</footer>
+
+</body>
+
+</html>}
 
 body{
     font-family:'Inter',sans-serif;
